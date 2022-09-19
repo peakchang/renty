@@ -1,31 +1,30 @@
 <div id="ft">
-  <div class="container mb-5">
-    <div class="row">
 
-      <div class="col-12 col-lg-4 ft_logo_in">
-        <div class="ft_logo_img">
-          <img src="/img/renty_base/logo.png" alt="">
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-8 mt-4">
-        <!-- <span>통신판매업신고번호 : 부천 2021-4849494 </span> -->
-        <span>개인정보 보호책임자 : 김연지 </span>
-        <span>대표 : 박창현 </span>
-        <span>회사명 : 애드피크 </span>
-        <span>주소 : 서울시 구로구 부광로88 B동 1010호 </span>
-        <span>사업자번호 : 240-06-01900 </span>
-        <span>전화 : 1644-9714</span>
-
-
-        {% if userInfo.user.userid %}
-        <span><a class="nav-link" href="/crm">CRM 바로가기</a></span>
-
-        {% endif %}
-      </div>
-
-    </div>
+  <div class="container flex flex-wrap justify-center items-center mx-auto mt-3">
+    <a href="/" class="flex items-center">
+      <img src="/img/renty_base/logo.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Renty</span>
+    </a>
   </div>
+
+  <div class="text-center">
+    <!-- <span>통신판매업신고번호 : 부천 2021-4849494 </span> -->
+    <span class="inline-block text-sm">개인정보 보호책임자 : 김연지 </span>
+    <span class="inline-block ml-3 text-sm">대표 : 박창현 </span>
+    <span class="inline-block ml-3 text-sm">회사명 : 애드피크 </span>
+    <span class="inline-block ml-3 text-sm">주소 : 서울시 구로구 부광로88 B동 1010호 </span>
+    <span class="inline-block ml-3 text-sm">사업자번호 : 240-06-01900 </span>
+    <span class="inline-block ml-3 text-sm">전화 : 1644-9714</span>
+
+
+    {% if userInfo.user.userid %}
+    <span><a class="nav-link" href="/crm">CRM 바로가기</a></span>
+
+    {% endif %}
+  </div>
+
+</div>
+</div>
 </div>
 
 

@@ -41,172 +41,604 @@
 
 
 
-<div class="fixed left-0 bottom-0 w-full z-50 all_item_wrap">
-    <div class=" bg-gray-50 rounded-t-xl border border-g200 dark:border-gray-600  px-3 text-center go_form_wrapper">
-        <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded-full w-full md:w-1/2 lg:w-1/3 tracking-widest text-xl  go_form">
-            신청하기
-        </button>
-    </div>
 
-
-    <div class=" bg-gray-50 rounded-t-xl border border-g200 dark:border-gray-600 px-3 choice_item_wrap">
-        <div class="container mx-auto max-w-4xl py-4 divide-y">
-
-
-            <div class="grid grid-cols-8 pb-2">
-                <div class="col-span-3 text-center flex items-center justify-center">인터넷 속도</div>
-                <div class="col-span-5">
-                    <select
-                        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
-                        name="" id="">
-                        <option value="100M">100M</option>
-                        <option value="500M">500M</option>
-                        <option value="1G">1G</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-8 py-2">
-                <div class="col-span-3 text-center flex items-center justify-center">TV 상품</div>
-                <div class="col-span-5">
-                    <select
-                        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
-                        name="" id="">
-                        <option value="100M">뉴베이직 TV</option>
-                        <option value="500M">라이트 TV</option>
-                        <option value="1G">ALL TV</option>
-                    </select>
-                </div>
-            </div>
-            <div class="grid grid-cols-8 py-2">
-                <div class="col-span-3 text-center flex items-center justify-center">결합 및 기타사항</div>
-                <div class="col-span-5">
-                    <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
-                </div>
-            </div>
-
-            <div class="text-center">
-                <button data-modal-toggle="infoModal"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded-full w-1/2 tracking-widest info_modal_open">정보
-                    입력하기</button>
-            </div>
+<form action="/success" method="post">
+    <div class="fixed left-0 bottom-0 w-full z-50 all_item_wrap">
+        <div class=" bg-gray-50 rounded-t-xl border border-g200 dark:border-gray-600  px-3 text-center go_form_wrapper">
+            <button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded-full w-full md:w-1/2 lg:w-1/3 tracking-widest text-xl  go_form">
+                신청하기
+            </button>
         </div>
-    </div>
-</div>
 
 
-<!-- Main modal -->
-<div id="infoModal" tabindex="-1" aria-hidden="true"
-    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full inset-0 h-modal h-full bg-gray-900 bg-opacity-50">
-    <div class="relative p-4 w-full max-w-2xl h-auto">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <!-- Modal header -->
-            <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600 background_modal">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    정보를 입력해주세요!
-                </h3>
-                <button type="button"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white item_close_modal"
-                    data-modal-toggle="infoModal">
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
-            <!-- Modal body -->
-            <div class="p-6 space-y-6">
-
-                <div class="container mx-auto max-w-4xl py-4 divide-y">
+        <div class=" bg-gray-50 rounded-t-xl border border-g200 dark:border-gray-600 px-3 choice_item_wrap">
+            <div class="container mx-auto max-w-4xl py-4 divide-y">
 
 
-                    <div class="grid grid-cols-8 py-2">
-                        <div class="col-span-3 text-center flex items-center justify-center">가입자명</div>
-                        <div class="col-span-5">
-                            <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
-                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
-                        </div>
+                <div class="grid grid-cols-8 pb-2">
+                    <div class="col-span-3 text-center flex items-center justify-center">인터넷 속도</div>
+                    <div class="col-span-5">
+                        <select
+                            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
+                            name="" id="">
+                            <option value="100M">100M</option>
+                            <option value="500M">500M</option>
+                            <option value="1G">1G</option>
+                        </select>
                     </div>
+                </div>
 
-                    <div class="grid grid-cols-8 py-2">
-                        <div class="col-span-3 text-center flex items-center justify-center">주민등록번호</div>
-                        <div class="col-span-5">
-                            <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
-                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
-                        </div>
+                <div class="grid grid-cols-8 py-2">
+                    <div class="col-span-3 text-center flex items-center justify-center">TV 상품</div>
+                    <div class="col-span-5">
+                        <select
+                            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
+                            name="" id="">
+                            <option value="100M">뉴베이직 TV</option>
+                            <option value="500M">라이트 TV</option>
+                            <option value="1G">ALL TV</option>
+                        </select>
                     </div>
-
-                    <div class="grid grid-cols-8 py-2">
-                        <div class="col-span-3 text-center flex items-center justify-center">핸드폰</div>
-                        <div class="col-span-5">
-                            <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
-                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
-                        </div>
+                </div>
+                <div class="grid grid-cols-8 py-2">
+                    <div class="col-span-3 text-center flex items-center justify-center">결합 및 기타사항</div>
+                    <div class="col-span-5">
+                        <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                     </div>
+                </div>
 
-                    <div class="grid grid-cols-8 py-2">
-                        <div class="col-span-3 text-center flex items-center justify-center">이메일</div>
-                        <div class="col-span-5">
-                            <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
-                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-                    <div class="grid grid-cols-8 pb-2">
-                        <div class="col-span-3 text-center flex items-center justify-center">인터넷 속도</div>
-                        <div class="col-span-5">
-                            <select
-                                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
-                                name="" id="">
-                                <option value="100M">100M</option>
-                                <option value="500M">500M</option>
-                                <option value="1G">1G</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-8 py-2">
-                        <div class="col-span-3 text-center flex items-center justify-center">TV 상품</div>
-                        <div class="col-span-5">
-                            <select
-                                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
-                                name="" id="">
-                                <option value="100M">뉴베이직 TV</option>
-                                <option value="500M">라이트 TV</option>
-                                <option value="1G">ALL TV</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-8 py-2">
-                        <div class="col-span-3 text-center flex items-center justify-center">결합 및 기타사항</div>
-                        <div class="col-span-5">
-                            <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
-                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <button data-modal-toggle="infoModal"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded-full w-1/2 tracking-widest info_modal_open">정보
-                            입력하기</button>
-                    </div>
+                <div class="text-center">
+                    <button data-modal-toggle="infoModal" type="button"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded-full w-1/2 tracking-widest info_modal_open">정보
+                        입력하기</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+
+    <!-- Main modal -->
+    <div id="infoModal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 w-full inset-0 h-modal h-full bg-gray-900 bg-opacity-50"
+        style="z-index: 60;">
+        <div class="relative p-4 w-full max-w-2xl h-auto">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div
+                    class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600 background_modal">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        <span class="head_text">가입자 정보를 입력해주세요!</span>
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white item_close_modal"
+                        data-modal-toggle="infoModal">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 pt-0 space-y-6">
+
+                    <!-- 기본정보 폼 -->
+                    <div class="container mx-auto max-w-4xl py-4 divide-y base_info">
+
+
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center flex items-center justify-center text-sm">가입자명</div>
+                            <div class="col-span-6">
+                                <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center flex items-center justify-center text-sm">주민등록번호</div>
+                            <div class="col-span-6 flex">
+                                <input type="text" id="default-input"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
+
+                                <span class="px-1 mt-1">-</span>
+
+                                <input type="text" id="default-input"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center flex items-center justify-center text-sm">핸드폰</div>
+                            <div class="col-span-6 flex">
+                                <input type="text" id="default-input" value="010"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
+
+                                <span class="px-1 mt-1">-</span>
+
+                                <input type="text" id="default-input"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                                <span class="px-1 mt-1">-</span>
+                                <input type="text" id="default-input"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center ">
+                                <span class="flex items-center justify-center inline-block text-sm">사용중</span>
+                                <span class="flex items-center justify-center inline-block text-sm">통신사</span>
+                            </div>
+                            <div class="col-span-6">
+                                <ul
+                                    class="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                    <li
+                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                        <div class="flex items-center pl-3">
+                                            <input id="horizontal-list-radio-license" type="radio" value=""
+                                                name="list-radio"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="horizontal-list-radio-license"
+                                                class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">SK</label>
+                                        </div>
+                                    </li>
+                                    <li
+                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                        <div class="flex items-center pl-3">
+                                            <input id="horizontal-list-radio-id" type="radio" value="" name="list-radio"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="horizontal-list-radio-id"
+                                                class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">KT</label>
+                                        </div>
+                                    </li>
+                                    <li
+                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                        <div class="flex items-center pl-3">
+                                            <input id="horizontal-list-radio-millitary" type="radio" value=""
+                                                name="list-radio"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="horizontal-list-radio-millitary"
+                                                class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">LG</label>
+                                        </div>
+                                    </li>
+                                    <li class="w-full dark:border-gray-600">
+                                        <div class="flex items-center pl-3">
+                                            <input id="horizontal-list-radio-passport" type="radio" value=""
+                                                name="list-radio"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="horizontal-list-radio-passport"
+                                                class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">알뜰폰</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center flex items-center justify-center">이메일</div>
+                            <div class="col-span-6 flex">
+                                <input type="text" id="default-input" value="010"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
+
+                                <span class="px-1 mt-1">@</span>
+
+                                <input type="text" id="default-input"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full mail_change_target">
+                                <span>&nbsp;</span>
+                                <select
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select_mailcompany select-arrow"
+                                    name="" id="">
+                                    <option value="">직접입력</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="kakao.com">kakao.com</option>
+                                    <option value="hanmail.net">hanmail.net</option>
+                                    <option value="google.com">google.com</option>
+                                    <option value="nate.com">nate.com</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center flex items-center justify-center">설치주소</div>
+                            <div class="col-span-6 grid grid-cols-2">
+                                <div>
+                                    <input type="text" id="renty_postcode" placeholder="우편번호"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-2 py-1 w-full">
+                                </div>
+                                <div class="text-center">
+                                    <input type="button" onclick="renty_execDaumPostcode()" value="우편번호 찾기"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white  px-2 py-1 rounded-sm w-3/4 mx-auto text-sm cursor-pointer">
+                                </div>
+
+                                <div class="mt-1">
+                                    <input type="text" id="renty_address" placeholder="주소"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-2 py-1 w-full">
+                                </div>
+                                <div class="mt-1 ml-1">
+                                    <input type="text" id="renty_extraAddress" placeholder="참고항목"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-2 py-1 w-full">
+                                </div>
+                                <div class="col-span-2 mt-1">
+                                    <input type="text" id="renty_detailAddress" placeholder="상세주소"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-2 py-1 w-full">
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button"
+                                class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 my-2 rounded-full w-1/2 goto_account_info">
+                                납부정보 입력하기
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="hidden container mx-auto max-w-4xl py-4 divide-y account_info">
+                        <div class="flex items-center mb-4 justify-end same_base">
+                            <input id="default-checkbox" type="checkbox" value=""
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-checkbox"
+                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">가입자 정보와 같음</label>
+                        </div>
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center ">
+                                <span class="text-sm">납부정보</span>
+                            </div>
+                            <div class="col-span-6">
+                                <ul
+                                    class="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                    <li
+                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                        <div class="flex items-center pl-3">
+                                            <input id="payment_bank" type="radio" value="bank" name="sel_payment"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                                                checked>
+                                            <label for="payment_bank"
+                                                class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">계좌이체</label>
+                                        </div>
+                                    </li>
+                                    <li
+                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                        <div class="flex items-center pl-3">
+                                            <input id="payment_card" type="radio" value="card" name="sel_payment"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="payment_card"
+                                                class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">카드납부</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                        <div class="divide-y onbank">
+
+
+
+                            <div class="grid grid-cols-8 py-2">
+                                <div class="col-span-2 text-center flex items-center justify-center">은행명</div>
+                                <div class="col-span-6 flex">
+                                    <select
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
+                                        name="" id="">
+                                        <option value="경남은행">경남은행</option>
+                                        <option value="광주은행">광주은행</option>
+                                        <option value="교보증권">교보증권</option>
+                                        <option value="국민은행">국민은행</option>
+                                        <option value="기업은행">기업은행</option>
+                                        <option value="농협은행">농협은행</option>
+                                        <option value="대구은행">대구은행</option>
+                                        <option value="대신증권">대신증권</option>
+                                        <option value="대우증권">대우증권</option>
+                                        <option value="동양종합금융증권">동양종합금융증권</option>
+                                        <option value="메리츠증권">메리츠증권</option>
+                                        <option value="미래에셋대우">미래에셋대우</option>
+                                        <option value="부국증권">부국증권</option>
+                                        <option value="부산은행">부산은행</option>
+                                        <option value="산림조합">산림조합</option>
+                                        <option value="산업은행">산업은행</option>
+                                        <option value="삼성증권">삼성증권</option>
+                                        <option value="상호저축은행중앙회">상호저축은행중앙회</option>
+                                        <option value="새마을금고">새마을금고</option>
+                                        <option value="솔로몬투자증권">솔로몬투자증권</option>
+                                        <option value="수협">수협</option>
+                                        <option value="스위스 저축은행">스위스 저축은행</option>
+                                        <option value="신영증권">신영증권</option>
+                                        <option value="신용협동조합">신용협동조합</option>
+                                        <option value="신한은행 (구조흥포함)">신한은행 (구조흥포함)</option>
+                                        <option value="신한금융투자">신한금융투자</option>
+                                        <option value="에스케이증권">에스케이증권</option>
+                                        <option value="에이치엠씨증권">에이치엠씨증권</option>
+                                        <option value="우리은행">우리은행</option>
+                                        <option value="우리투자증권">우리투자증권</option>
+                                        <option value="우체국">우체국</option>
+                                        <option value="유안타증권">유안타증권</option>
+                                        <option value="유진투자증권">유진투자증권</option>
+                                        <option value="이트레이드증권">이트레이드증권</option>
+                                        <option value="전북은행">전북은행</option>
+                                        <option value="제이피모간체이스">제이피모간체이스</option>
+                                        <option value="제주은행">제주은행</option>
+                                        <option value="축협은행">축협은행</option>
+                                        <option value="카카오뱅크">카카오뱅크</option>
+                                        <option value="케이뱅크">케이뱅크</option>
+                                        <option value="케이프증권">케이프증권</option>
+                                        <option value="키운증권">키운증권</option>
+                                        <option value="토스">토스</option>
+                                        <option value="하나은행(구외환포함)">하나은행(구외환포함)</option>
+                                        <option value="하나대투증권">하나대투증권</option>
+                                        <option value="하이투자증권">하이투자증권</option>
+                                        <option value="한국은행">한국은행</option>
+                                        <option value="한국수출입은행">한국수출입은행</option>
+                                        <option value="한국씨티(구 한미)">한국씨티(구 한미)</option>
+                                        <option value="한국투자증권">한국투자증권</option>
+                                        <option value="한화증권">한화증권</option>
+                                        <option value="현대증권">현대증권</option>
+                                        <option value="KB증권">KB증권</option>
+                                        <option value="NH투자증권">NH투자증권</option>
+                                        <option value="SC(스탠다드차타드)">SC(스탠다드차타드)</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="grid grid-cols-8 py-2">
+                                <div class="col-span-2 text-center flex items-center justify-center text-sm">계좌번호</div>
+                                <div class="col-span-6">
+                                    <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-8 py-2">
+                                <div class="col-span-2 text-center flex items-center justify-center text-sm">예금주</div>
+                                <div class="col-span-6 flex">
+                                    <input type="text" id="default-input"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 w-full">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-8 py-2">
+                                <div class="col-span-2 text-center flex items-center justify-center text-sm">주민등록번호
+                                </div>
+                                <div class="col-span-6 flex">
+                                    <input type="text" id="default-input"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
+
+                                    <span class="px-1 mt-1">-</span>
+
+                                    <input type="text" id="default-input"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="hidden divide-y oncard">
+
+                            <div class="grid grid-cols-8 py-2">
+                                <div class="col-span-2 text-center flex items-center justify-center text-sm">카드사</div>
+                                <div class="col-span-6 flex">
+                                    <select
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
+                                        name="" id="">
+                                        <option value="국민카드">국민카드</option>
+                                        <option value="기업IBK">기업IBK</option>
+                                        <option value="현대카드">현대카드</option>
+                                        <option value="농협(BC)카드">농협(BC)카드</option>
+                                        <option value="롯데카드">롯데카드</option>
+                                        <option value="비씨카드">비씨카드</option>
+                                        <option value="산업은행카드">산업은행카드</option>
+                                        <option value="하나(SK)카드">하나(SK)카드</option>
+                                        <option value="삼성카드">삼성카드</option>
+                                        <option value="수협카드">수협카드</option>
+                                        <option value="신한카드">신한카드</option>
+                                        <option value="씨티카드">씨티카드</option>
+                                        <option value="외환카드">외환카드</option>
+                                        <option value="우리카드">우리카드</option>
+                                        <option value="전북은행카드">전북은행카드</option>
+                                        <option value="제주은행카드">제주은행카드</option>
+                                        <option value="광주카드">광주카드</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="grid grid-cols-8 py-2">
+                                <div class="col-span-2 text-center flex items-center justify-center text-sm">카드번호</div>
+                                <div class="col-span-6">
+                                    <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-8 py-2">
+                                <div class="col-span-2 text-center flex items-center justify-center text-sm">카드주 명</div>
+                                <div class="col-span-6 flex">
+                                    <input type="text" id="default-input"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 w-full">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-8 py-2">
+                                <div class="col-span-2 text-center flex items-center justify-center text-sm">유효기간</div>
+                                <div class="col-span-6 flex">
+                                    <input type="text" id="default-input"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
+
+                                    <span class="px-1 mt-1">년</span>
+
+                                    <input type="text" id="default-input"
+                                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                                    <span class="px-1 mt-1">월</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="text-center flex justify-between">
+                            <button type="button"
+                                class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 my-2 rounded-full w-1/3 text-sm backto_base_info">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i> 기본정보로
+                            </button>
+
+                            <button type="button"
+                                class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 my-2 rounded-full w-1/3 text-sm goto_gift_info">
+                                사은품정보 입력 <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="hidden container mx-auto max-w-4xl py-4 divide-y gift_info">
+                        <div class="flex items-center mb-4 justify-end same_account">
+                            <input id="default-checkbox" type="checkbox" value=""
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-checkbox"
+                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">계좌 정보와 같음</label>
+                        </div>
+
+
+
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center flex items-center justify-center">사은품계좌</div>
+                            <div class="col-span-6 flex">
+                                <select
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
+                                    name="" id="">
+                                    <option value="경남은행">경남은행</option>
+                                    <option value="광주은행">광주은행</option>
+                                    <option value="교보증권">교보증권</option>
+                                    <option value="국민은행">국민은행</option>
+                                    <option value="기업은행">기업은행</option>
+                                    <option value="농협은행">농협은행</option>
+                                    <option value="대구은행">대구은행</option>
+                                    <option value="대신증권">대신증권</option>
+                                    <option value="대우증권">대우증권</option>
+                                    <option value="동양종합금융증권">동양종합금융증권</option>
+                                    <option value="메리츠증권">메리츠증권</option>
+                                    <option value="미래에셋대우">미래에셋대우</option>
+                                    <option value="부국증권">부국증권</option>
+                                    <option value="부산은행">부산은행</option>
+                                    <option value="산림조합">산림조합</option>
+                                    <option value="산업은행">산업은행</option>
+                                    <option value="삼성증권">삼성증권</option>
+                                    <option value="상호저축은행중앙회">상호저축은행중앙회</option>
+                                    <option value="새마을금고">새마을금고</option>
+                                    <option value="솔로몬투자증권">솔로몬투자증권</option>
+                                    <option value="수협">수협</option>
+                                    <option value="스위스 저축은행">스위스 저축은행</option>
+                                    <option value="신영증권">신영증권</option>
+                                    <option value="신용협동조합">신용협동조합</option>
+                                    <option value="신한은행 (구조흥포함)">신한은행 (구조흥포함)</option>
+                                    <option value="신한금융투자">신한금융투자</option>
+                                    <option value="에스케이증권">에스케이증권</option>
+                                    <option value="에이치엠씨증권">에이치엠씨증권</option>
+                                    <option value="우리은행">우리은행</option>
+                                    <option value="우리투자증권">우리투자증권</option>
+                                    <option value="우체국">우체국</option>
+                                    <option value="유안타증권">유안타증권</option>
+                                    <option value="유진투자증권">유진투자증권</option>
+                                    <option value="이트레이드증권">이트레이드증권</option>
+                                    <option value="전북은행">전북은행</option>
+                                    <option value="제이피모간체이스">제이피모간체이스</option>
+                                    <option value="제주은행">제주은행</option>
+                                    <option value="축협은행">축협은행</option>
+                                    <option value="카카오뱅크">카카오뱅크</option>
+                                    <option value="케이뱅크">케이뱅크</option>
+                                    <option value="케이프증권">케이프증권</option>
+                                    <option value="키운증권">키운증권</option>
+                                    <option value="토스">토스</option>
+                                    <option value="하나은행(구외환포함)">하나은행(구외환포함)</option>
+                                    <option value="하나대투증권">하나대투증권</option>
+                                    <option value="하이투자증권">하이투자증권</option>
+                                    <option value="한국은행">한국은행</option>
+                                    <option value="한국수출입은행">한국수출입은행</option>
+                                    <option value="한국씨티(구 한미)">한국씨티(구 한미)</option>
+                                    <option value="한국투자증권">한국투자증권</option>
+                                    <option value="한화증권">한화증권</option>
+                                    <option value="현대증권">현대증권</option>
+                                    <option value="KB증권">KB증권</option>
+                                    <option value="NH투자증권">NH투자증권</option>
+                                    <option value="SC(스탠다드차타드)">SC(스탠다드차타드)</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center flex items-center justify-center text-sm">계좌번호</div>
+                            <div class="col-span-6 flex">
+                                <input type="text" id="default-input"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 w-full">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center flex items-center justify-center text-sm">예금주</div>
+                            <div class="col-span-6 flex">
+                                <input type="text" id="default-input"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 w-full">
+                            </div>
+                        </div>
+
+
+                        <div class="text-center flex justify-between">
+                            <button type="button"
+                                class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 my-2 rounded-full text-sm w-1/3 backto_account_info">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i> 결제정보로
+                            </button>
+
+                            <button
+                                class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 my-2 rounded-full text-sm w-1/3 goto_submit">
+                                신청완료</i>
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
 
 {% include "renty/renty_change_tong.html" %}
 
@@ -249,6 +681,48 @@
         deleteCookie('startMd');
     })
 
+    $('.select_mailcompany').change((e) => {
+        document.querySelector('.mail_change_target').value = e.target.value
+    })
+
+
+    $('.goto_account_info').click(() => {
+        var testget = document.querySelector('.head_text').innerHTML = "납부 정보를 입력해주세요!"
+        $('.base_info').hide()
+        $('.account_info').show()
+    })
+
+    $('.backto_base_info').click(() => {
+        var testget = document.querySelector('.head_text').innerHTML = "가입자 정보를 입력해주세요!"
+        $('.account_info').hide()
+        $('.base_info').show()
+    })
+
+    $('.goto_gift_info').click(() => {
+        var testget = document.querySelector('.head_text').innerHTML = "사은품 수령 정보를 입력해주세요!"
+        $('.account_info').hide()
+        $('.gift_info').show()
+    })
+
+    $('.backto_account_info').click(() => {
+        var testget = document.querySelector('.head_text').innerHTML = "결제 정보를 입력해주세요!"
+        $('.gift_info').hide()
+        $('.account_info').show()
+    })
+
+    $('input[name=sel_payment]').change((e) => {
+        console.log(e.target.value);
+        if (e.target.value == "bank") {
+            $('.onbank').show()
+            $('.oncard').hide()
+            $('.same_account,.same_base').show()
+        } else {
+            $('.onbank').hide()
+            $('.oncard').show()
+            $('.same_account,.same_base').hide()
+        }
+    })
+
 
 
 
@@ -265,10 +739,57 @@
     function deleteCookie(name) {
         document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
+</script>
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function renty_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function (data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
 
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
 
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if (data.userSelectedType === 'R') {
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if (data.buildingName !== '' && data.apartment === 'Y') {
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if (extraAddr !== '') {
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("renty_extraAddress").value = extraAddr;
+
+                } else {
+                    document.getElementById("renty_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('renty_postcode').value = data.zonecode;
+                document.getElementById("renty_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("renty_detailAddress").focus();
+            }
+        }).open();
+    }
 </script>
 
 {% endblock %}

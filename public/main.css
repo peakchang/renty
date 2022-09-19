@@ -59,10 +59,10 @@
   .onsubmit button{width:100%; max-width: 400px; background-color: #AA1212; border: 1px solid #AA1212; color: white; font-size: 25px; padding: 12px 0;}
   
   /* 푸터 */
-  #ft {position: relative; border-top: 1px solid #EAEAEA; margin-top: 15px;}
-  #ft span {display: inline-block; margin-right: 16px; font-family: 'Pretendard-Light'; font-size: 14px;}
+  #ft {position: relative; border-top: 1px solid #EAEAEA; margin-top: 15px; margin-bottom: 15px;}
+  /* #ft span {display: inline-block; margin-right: 16px; font-family: 'Pretendard-Light'; font-size: 14px;}
   #ft img {display:inline-block; width: 120px; margin-top:15px;}
-  .ft_logo_img{text-align: center;}
+  .ft_logo_img{text-align: center;} */
   
   
   

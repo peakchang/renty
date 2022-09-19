@@ -33,6 +33,18 @@ router.get('/form', (req,res, next) => {
     res.render('renty/renty_form', {});
 })
 
+router.get('/success', (req,res, next) => {
+    console.log('진입!!! 성공!!!!!!!!!!!!!!!!!!');
+    res.render('renty/renty_form_success', {});
+})
+
+
+router.post('/success', (req,res, next) => {
+    console.log('진입!!! 성공!!!!!!!!!!!!!!!!!!');
+    res.render('renty/renty_form_success', {});
+})
+
+
 router.get('/policy', (req, res, next) => {
     res.render('renty/renty_policy');
 })
