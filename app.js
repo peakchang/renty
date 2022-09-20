@@ -68,7 +68,6 @@ if (process.env.NODE_ENV === 'production') {
   // app.enable('trust proxy');
   app.use(morgan('combined'));
   app.use(helmet({
-    referrerPolicy: { policy: "no-referrer" },
     contentSecurityPolicy: false
   }));
   app.use(hpp());
