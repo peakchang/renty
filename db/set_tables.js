@@ -2,7 +2,7 @@ const sql_con = require('./index');
 
 
 exports.tableSetting = async () => {
-
+    console.log('테이블 셋팅 안하는거니~~~~~~~~~~~~~~');
     let make_users_form = `CREATE TABLE IF NOT EXISTS users(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         userid VARCHAR(50) UNIQUE,
