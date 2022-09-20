@@ -56,9 +56,9 @@ router.post('/' , (req,res) => {
 
     let getArr = [get_form_name,get_full_name,get_phone,nowDateTime];
     let formInertSql = `INSERT INTO application_form (form_name,mb_name,mb_phone,created_at) VALUES (?,?,?,?);`;
-    if(get_form_name){
-        executeQuery(formInertSql, getArr);
-    }
+    
+    executeQuery(formInertSql, getArr);
+
     
 
     console.log('success!!!!!');
