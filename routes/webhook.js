@@ -21,13 +21,19 @@ router.post('/zap/' , (req,res) => {
 });
 
 router.get('/', (req, res) => {
-    let testVal = [ {ad_id: '23851065075770490',ad_name: '광고 이름', adset_id: '23851065075780490'}];
-    console.log(testVal);
-    console.log(testVal[0].ad_id);
 
-    console.log('2nd chk here!!!');
-    console.log(req.query['hub.mode']);
-    console.log(req.query['hub.verify_token']);
+
+    // let testVal = [ {ad_id: '23851065075770490',ad_name: '광고 이름', adset_id: '23851065075780490'}];
+    // console.log(testVal);
+    // console.log(testVal[0].ad_id);
+
+    // console.log('2nd chk here!!!');
+    // console.log(req.query['hub.mode']);
+    // console.log(req.query['hub.verify_token']);
+
+    let testSql = `SELECT * FROM application_form`;
+    let getTestVal = executeQuery(testSql);
+    console.log(getTestVal);
 
     if (
         req.query['hub.mode'] == 'subscribe' &&
