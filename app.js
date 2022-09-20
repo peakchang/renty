@@ -88,7 +88,7 @@ const sessionOption = {
   cookie: {
     httpOnly: true,
     // ▼ https 쓸거면 true
-    secure: false,
+    secure: true,
   },
   // redis 쓸거면 주석 해제
   //   store: new RedisStore({ client: redisClient }),
@@ -96,7 +96,7 @@ const sessionOption = {
 if (process.env.NODE_ENV === 'production') {
   sessionOption.proxy = true;
   // ▼ https 쓸거면 주석 해제
-  // sessionOption.cookie.secure = true;
+  sessionOption.cookie.secure = true;
 }
 app.use(session(sessionOption));
 app.use(passport.initialize());
