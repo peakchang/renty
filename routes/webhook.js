@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.post('/' , async (req,res) => {
+router.post('/' , (req,res) => {
     var nowDateTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     let getData = req.body
     console.log('Zap request body:', getData);
@@ -57,7 +57,7 @@ router.post('/' , async (req,res) => {
     let getArr = [get_form_name,get_full_name,get_phone,nowDateTime];
     let formInertSql = `INSERT INTO application_form (form_name,mb_name,mb_phone,created_at) VALUES (?,?,?,?);`;
     if(get_form_name){
-        await executeQuery(formInertSql, getArr);
+        executeQuery(formInertSql, getArr);
     }
     
 
