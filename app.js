@@ -69,7 +69,7 @@ nunjucks.configure('views', {
 if (process.env.NODE_ENV === 'production') {
   app.enable('trust proxy');
   app.use(morgan('combined'));
-  app.use(helmet({ contentSecureityPolicy: false }));
+  app.use(helmet({ contentSecurityPolicy: false }));
   app.use(hpp());
 } else {
   app.use(morgan('dev'));
