@@ -3,7 +3,7 @@ const fs = require('fs');
 const { executeQuery } = require('../db/dbset.js');
 
 const router = express.Router();
-
+const sql_con = require('../db/index');
 var token = process.env.TOKEN || 'token';
 var received_updates = [];
 
@@ -19,6 +19,14 @@ router.post('/zap/' , (req,res) => {
 router.post('/zap/' , (req,res) => {
     res.send('웹훅 GET PAGE!!!!!')
 });
+
+router.get('/test', async (req, res) => {
+
+    let testSql = `SELECT * FROM application_form`;
+    const results = await sql_con.promise().query(testSql)
+    console.log(results[0]);
+    res.send('testtestsetsetset')
+})
 
 router.get('/', async (req, res) => {
 
