@@ -8,6 +8,7 @@ var token = process.env.TOKEN || 'token';
 var received_updates = [];
 
 
+
 router.post('/zap/' , (req,res) => {
     console.log(req.body);
     res.send('웹훅 수신!')
@@ -45,6 +46,13 @@ router.post('/' , async (req,res) => {
     let getData = req.body
     console.log('Zap request body:', getData);
     setData = getData[0];
+    let get_form_name = setData.form_name;
+    let get_full_name = setData.full_name;
+    let temp_phone = setData.phone_number;
+    let get_phone = temp_phone.replace('+82', '0')
+
+    
+
     console.log('success!!!!!');
     res.send('zapzaapapapapapapap')
 })

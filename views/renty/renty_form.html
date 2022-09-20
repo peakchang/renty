@@ -61,7 +61,7 @@
                     <div class="col-span-5">
                         <select
                             class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
-                            name="" id="">
+                            name="itn_item" id="">
                             <option value="100M">100M</option>
                             <option value="500M">500M</option>
                             <option value="1G">1G</option>
@@ -74,7 +74,7 @@
                     <div class="col-span-5">
                         <select
                             class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
-                            name="" id="">
+                            name="tv_item" id="">
                             <option value="100M">뉴베이직 TV</option>
                             <option value="500M">라이트 TV</option>
                             <option value="1G">ALL TV</option>
@@ -84,7 +84,7 @@
                 <div class="grid grid-cols-8 py-2">
                     <div class="col-span-3 text-center flex items-center justify-center">결합 및 기타사항</div>
                     <div class="col-span-5">
-                        <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
+                        <input type="text" name="item_other" id="default-input" placeholder="문의 사항을 입력해주세요"
                             class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                     </div>
                 </div>
@@ -134,36 +134,25 @@
                         <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center flex items-center justify-center text-sm">가입자명</div>
                             <div class="col-span-6">
-                                <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
+                                <input type="text" name="mb_name" id="default-input" placeholder="문의 사항을 입력해주세요"
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-8 py-2">
-                            <div class="col-span-2 text-center flex items-center justify-center text-sm">주민등록번호</div>
-                            <div class="col-span-6 flex">
-                                <input type="text" id="default-input"
-                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
-
-                                <span class="px-1 mt-1">-</span>
-
-                                <input type="text" id="default-input"
-                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
-                            </div>
-                        </div>
+                        
 
                         <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center flex items-center justify-center text-sm">핸드폰</div>
                             <div class="col-span-6 flex">
-                                <input type="text" id="default-input" value="010"
+                                <input type="text" name="mb_phone1" id="default-input" value="010"
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
 
                                 <span class="px-1 mt-1">-</span>
 
-                                <input type="text" id="default-input"
+                                <input type="text" name="mb_phone2" id="default-input"
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                                 <span class="px-1 mt-1">-</span>
-                                <input type="text" id="default-input"
+                                <input type="text" name="mb_phone3" id="default-input"
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                             </div>
                         </div>
@@ -180,8 +169,8 @@
                                         class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                                         <div class="flex items-center pl-3">
                                             <input id="horizontal-list-radio-license" type="radio" value=""
-                                                name="list-radio"
-                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                name="mb_phone_cpn"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" checked>
                                             <label for="horizontal-list-radio-license"
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">SK</label>
                                         </div>
@@ -189,7 +178,7 @@
                                     <li
                                         class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                                         <div class="flex items-center pl-3">
-                                            <input id="horizontal-list-radio-id" type="radio" value="" name="list-radio"
+                                            <input id="horizontal-list-radio-id" type="radio" value="" name="mb_phone_cpn"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                             <label for="horizontal-list-radio-id"
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">KT</label>
@@ -199,7 +188,7 @@
                                         class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                                         <div class="flex items-center pl-3">
                                             <input id="horizontal-list-radio-millitary" type="radio" value=""
-                                                name="list-radio"
+                                                name="mb_phone_cpn"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                             <label for="horizontal-list-radio-millitary"
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">LG</label>
@@ -208,7 +197,7 @@
                                     <li class="w-full dark:border-gray-600">
                                         <div class="flex items-center pl-3">
                                             <input id="horizontal-list-radio-passport" type="radio" value=""
-                                                name="list-radio"
+                                                name="mb_phone_cpn"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                             <label for="horizontal-list-radio-passport"
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">알뜰폰</label>
@@ -219,14 +208,27 @@
                         </div>
 
                         <div class="grid grid-cols-8 py-2">
+                            <div class="col-span-2 text-center flex items-center justify-center text-sm">주민등록번호</div>
+                            <div class="col-span-6 flex">
+                                <input type="text" name="mb_regnum1" id="default-input"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
+
+                                <span class="px-1 mt-1">-</span>
+
+                                <input type="text" name="mb_regnum2" id="default-input"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center flex items-center justify-center">이메일</div>
                             <div class="col-span-6 flex">
-                                <input type="text" id="default-input" value="010"
+                                <input type="text" name="mb_email1" id="default-input" value="010"
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
 
                                 <span class="px-1 mt-1">@</span>
 
-                                <input type="text" id="default-input"
+                                <input type="text" name="mb_email2" id="default-input"
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full mail_change_target">
                                 <span>&nbsp;</span>
                                 <select
@@ -246,7 +248,7 @@
                             <div class="col-span-2 text-center flex items-center justify-center">설치주소</div>
                             <div class="col-span-6 grid grid-cols-2">
                                 <div>
-                                    <input type="text" id="renty_postcode" placeholder="우편번호"
+                                    <input type="text" name="mb_address_zip" id="renty_postcode" placeholder="우편번호"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-2 py-1 w-full">
                                 </div>
                                 <div class="text-center">
@@ -255,15 +257,15 @@
                                 </div>
 
                                 <div class="mt-1">
-                                    <input type="text" id="renty_address" placeholder="주소"
+                                    <input type="text" name="mb_address1" id="renty_address" placeholder="주소"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-2 py-1 w-full">
                                 </div>
                                 <div class="mt-1 ml-1">
-                                    <input type="text" id="renty_extraAddress" placeholder="참고항목"
+                                    <input type="text" name="mb_address2" id="renty_extraAddress" placeholder="참고항목"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-2 py-1 w-full">
                                 </div>
                                 <div class="col-span-2 mt-1">
-                                    <input type="text" id="renty_detailAddress" placeholder="상세주소"
+                                    <input type="text" name="mb_address3" id="renty_detailAddress" placeholder="상세주소"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-2 py-1 w-full">
                                 </div>
 
@@ -311,7 +313,7 @@
                                     <li
                                         class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                                         <div class="flex items-center pl-3">
-                                            <input id="payment_bank" type="radio" value="bank" name="sel_payment"
+                                            <input id="payment_bank" type="radio" value="bank" name="mb_pay_type"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                                 checked>
                                             <label for="payment_bank"
@@ -321,7 +323,7 @@
                                     <li
                                         class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                                         <div class="flex items-center pl-3">
-                                            <input id="payment_card" type="radio" value="card" name="sel_payment"
+                                            <input id="payment_card" type="radio" value="card" name="mb_pay_type"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                             <label for="payment_card"
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">카드납부</label>
@@ -342,7 +344,7 @@
                                 <div class="col-span-6 flex">
                                     <select
                                         class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
-                                        name="" id="">
+                                        name="mb_bank_cpn" id="">
                                         <option value="경남은행">경남은행</option>
                                         <option value="광주은행">광주은행</option>
                                         <option value="교보증권">교보증권</option>
@@ -407,7 +409,7 @@
                             <div class="grid grid-cols-8 py-2">
                                 <div class="col-span-2 text-center flex items-center justify-center text-sm">계좌번호</div>
                                 <div class="col-span-6">
-                                    <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
+                                    <input type="text" name="mb_bank_accountnum" id="default-input" placeholder=""
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                                 </div>
                             </div>
@@ -415,7 +417,7 @@
                             <div class="grid grid-cols-8 py-2">
                                 <div class="col-span-2 text-center flex items-center justify-center text-sm">예금주</div>
                                 <div class="col-span-6 flex">
-                                    <input type="text" id="default-input"
+                                    <input type="text" name="mb_bank_name" id="default-input"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 w-full">
                                 </div>
                             </div>
@@ -424,12 +426,12 @@
                                 <div class="col-span-2 text-center flex items-center justify-center text-sm">주민등록번호
                                 </div>
                                 <div class="col-span-6 flex">
-                                    <input type="text" id="default-input"
+                                    <input type="text" name="mb_bank_regnum1" id="default-input"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
 
                                     <span class="px-1 mt-1">-</span>
 
-                                    <input type="text" id="default-input"
+                                    <input type="text" name="mb_bank_regnum2" id="default-input"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                                 </div>
                             </div>
@@ -444,7 +446,7 @@
                                 <div class="col-span-6 flex">
                                     <select
                                         class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
-                                        name="" id="">
+                                        name="mb_card_cpn" id="">
                                         <option value="국민카드">국민카드</option>
                                         <option value="기업IBK">기업IBK</option>
                                         <option value="현대카드">현대카드</option>
@@ -471,7 +473,7 @@
                             <div class="grid grid-cols-8 py-2">
                                 <div class="col-span-2 text-center flex items-center justify-center text-sm">카드번호</div>
                                 <div class="col-span-6">
-                                    <input type="text" id="default-input" placeholder="문의 사항을 입력해주세요"
+                                    <input type="text" name="mb_card_cardnum" id="default-input" placeholder="문의 사항을 입력해주세요"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                                 </div>
                             </div>
@@ -479,7 +481,7 @@
                             <div class="grid grid-cols-8 py-2">
                                 <div class="col-span-2 text-center flex items-center justify-center text-sm">카드주 명</div>
                                 <div class="col-span-6 flex">
-                                    <input type="text" id="default-input"
+                                    <input type="text" name="mb_card_name" id="default-input"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 w-full">
                                 </div>
                             </div>
@@ -487,12 +489,12 @@
                             <div class="grid grid-cols-8 py-2">
                                 <div class="col-span-2 text-center flex items-center justify-center text-sm">유효기간</div>
                                 <div class="col-span-6 flex">
-                                    <input type="text" id="default-input"
+                                    <input type="text" name="mb_card_validity1" id="default-input"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
 
                                     <span class="px-1 mt-1">년</span>
 
-                                    <input type="text" id="default-input"
+                                    <input type="text" name="mb_card_validity2" id="default-input"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                                     <span class="px-1 mt-1">월</span>
                                 </div>
@@ -531,7 +533,7 @@
                             <div class="col-span-6 flex">
                                 <select
                                     class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
-                                    name="" id="">
+                                    name="mb_gift_bankname" id="">
                                     <option value="경남은행">경남은행</option>
                                     <option value="광주은행">광주은행</option>
                                     <option value="교보증권">교보증권</option>
@@ -595,7 +597,7 @@
                         <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center flex items-center justify-center text-sm">계좌번호</div>
                             <div class="col-span-6 flex">
-                                <input type="text" id="default-input"
+                                <input type="text" name="mb_gift_accountnum" id="default-input"
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 w-full">
                             </div>
                         </div>
@@ -603,7 +605,7 @@
                         <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center flex items-center justify-center text-sm">예금주</div>
                             <div class="col-span-6 flex">
-                                <input type="text" id="default-input"
+                                <input type="text" name="mb_gift_name" id="default-input"
                                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 w-full">
                             </div>
                         </div>
@@ -710,7 +712,7 @@
         $('.account_info').show()
     })
 
-    $('input[name=sel_payment]').change((e) => {
+    $('input[name=mb_pay_type]').change((e) => {
         console.log(e.target.value);
         if (e.target.value == "bank") {
             $('.onbank').show()
