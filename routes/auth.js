@@ -25,15 +25,6 @@ router.get('/join', isNotLoggedIn, async (req, res, next) => {
     // await executeQuery(testSql);
 
     // SELECT 출력 샘플
-    
-
-
-
-
-
-
-
-
     res.render('auth/join');
 })
 

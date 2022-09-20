@@ -16,13 +16,15 @@ const hpp = require('hpp');
 
 dotenv.config();
 
+// 초기 DB 셋팅
+const { tableSetting } = require('./db/set_tables.js');
+tableSetting()
 
 // 라우터 불러오기
 const crmRouter = require('./routes/crm');
 const authRouter = require('./routes/auth');
 const mainRouter = require('./routes/main');
 const webhookRouter = require('./routes/webhook');
-
 
 
 
