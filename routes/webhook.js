@@ -7,7 +7,9 @@ const router = express.Router();
 var token = process.env.TOKEN || 'token';
 var received_updates = [];
 
-
+const moment = require('moment');
+require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
 
 router.post('/zap/' , (req,res) => {
     console.log(req.body);
@@ -43,6 +45,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/' , async (req,res) => {
+    var nowDateTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     let getData = req.body
     console.log('Zap request body:', getData);
     setData = getData[0];
@@ -51,6 +54,11 @@ router.post('/' , async (req,res) => {
     let temp_phone = setData.phone_number;
     let get_phone = temp_phone.replace('+82', '0')
 
+    let getArr = [get_form_name,get_full_name,get_phone,nowDateTime];
+    let formInertSql = `INSERT INTO application_form (form_name,mb_name,mb_phone,created_at) VALUES (?,?,?,?);`;
+    if(get_form_name){
+        await executeQuery(formInertSql, getArr);
+    }
     
 
     console.log('success!!!!!');
