@@ -3,7 +3,7 @@ const fs = require('fs');
 const { executeQuery } = require('../db/dbset.js');
 
 const router = express.Router();
-const sql_con = require('../db/index');
+
 var token = process.env.TOKEN || 'token';
 var received_updates = [];
 
@@ -21,15 +21,7 @@ router.post('/zap/' , (req,res) => {
 });
 
 router.get('/test', async (req, res) => {
-
-    let testSql = `SELECT * FROM application_form`;
-    // const results = await sql_con.promise().query(testSql)
-    sql_con.query(testSql, (err, result) => {
-        console.log(result);
-    })
-
-    // console.log(results[0]);
-    res.send('testtestsetsetset')
+    res.send('sfljsildfjsldjif')
 })
 
 router.get('/', async (req, res) => {

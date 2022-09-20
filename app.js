@@ -7,7 +7,7 @@ const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
 const passport = require('passport');
 
-
+// const mysql = require('mysql2')
 
 // 아래 두개는 서버 관련된 보안을 알아서 해준댜
 const helmet = require('helmet');
@@ -15,7 +15,6 @@ const hpp = require('hpp');
 
 
 dotenv.config();
-
 // 초기 DB 셋팅
 const { tableSetting } = require('./db/set_tables.js');
 tableSetting()
@@ -105,6 +104,26 @@ app.use('/', mainRouter);
 app.use('/auth', authRouter);
 app.use('/crm', crmRouter);
 app.use('/webhook', webhookRouter);
+
+
+const mysql      = require('mysql');
+const connection = mysql.createConnection({
+  host     : '127.0.0.1',
+  user     : 'root',
+  password : 'rkwkrh13!#',
+  database : 'renty'
+});
+
+connection.connect();
+
+
+app.get('/testsql', (req, res) => {
+  connection.query('SELECT * from application_form', (error, rows, fields) => {
+    if (error) throw error;
+    console.log('User info is: ', rows);
+  });
+})
+
 
 
 // 라우터 없을시 에러 발생
