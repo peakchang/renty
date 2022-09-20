@@ -4,7 +4,7 @@
   "description": "렌티",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production PORT=80 pm2 start server.js -i 0",
+    "start": "cross-env NODE_ENV=production PORT=3060 pm2 start server.js -i 0",
     "dev": "postcss public/tw_ready.css -o public/tailwind.css && nodemon server"
   },
   "author": "ADPEAK",
