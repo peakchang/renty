@@ -20,7 +20,7 @@ router.post('/zap/' , (req,res) => {
     res.send('웹훅 GET PAGE!!!!!')
 });
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
 
     // let testVal = [ {ad_id: '23851065075770490',ad_name: '광고 이름', adset_id: '23851065075780490'}];
@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
     // console.log(req.query['hub.verify_token']);
 
     let testSql = `SELECT * FROM application_form`;
-    let getTestVal = executeQuery(testSql);
+    let getTestVal = await executeQuery(testSql);
     console.log(getTestVal);
 
     if (
