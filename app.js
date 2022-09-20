@@ -67,7 +67,7 @@ nunjucks.configure('views', {
 
 
 if (process.env.NODE_ENV === 'production') {
-  app.enable('trust proxy');
+  // app.enable('trust proxy');
   app.use(morgan('combined'));
   // app.use(helmet({ contentSecurityPolicy: false }));
   // app.use(hpp());
@@ -86,18 +86,16 @@ const sessionOption = {
   saveUninitialized: false,
   secret: process.env.COOKIE_SECRET,
   cookie: {
-    httpOnly: true,
-    // ▼ https 쓸거면 true
-    secure: true,
+      httpOnly: true,
+      secure: false,
   },
-  // redis 쓸거면 주석 해제
-  //   store: new RedisStore({ client: redisClient }),
 };
+
 if (process.env.NODE_ENV === 'production') {
   sessionOption.proxy = true;
-  // ▼ https 쓸거면 주석 해제
   sessionOption.cookie.secure = true;
 }
+
 app.use(session(sessionOption));
 app.use(passport.initialize());
 app.use(passport.session());
