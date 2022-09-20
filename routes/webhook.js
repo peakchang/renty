@@ -23,8 +23,12 @@ router.post('/zap/' , (req,res) => {
 router.get('/test', async (req, res) => {
 
     let testSql = `SELECT * FROM application_form`;
-    const results = await sql_con.promise().query(testSql)
-    console.log(results[0]);
+    // const results = await sql_con.promise().query(testSql)
+    sql_con.query(testSql, (err, result) => {
+        console.log(result);
+    })
+
+    // console.log(results[0]);
     res.send('testtestsetsetset')
 })
 
