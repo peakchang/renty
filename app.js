@@ -67,10 +67,10 @@ nunjucks.configure('views', {
 
 
 if (process.env.NODE_ENV === 'production') {
-  // app.enable('trust proxy');
+  app.enable('trust proxy');
   app.use(morgan('combined'));
-  // app.use(helmet({ contentSecurityPolicy: false }));
-  // app.use(hpp());
+  app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
+  app.use(hpp());
 } else {
   app.use(morgan('dev'));
 }
@@ -87,13 +87,13 @@ const sessionOption = {
   secret: process.env.COOKIE_SECRET,
   cookie: {
       httpOnly: true,
-      secure: true,
+      secure: true, // if use HTTPS Set 'true' or 'false
   },
 };
 
 if (process.env.NODE_ENV === 'production') {
   sessionOption.proxy = true;
-  sessionOption.cookie.secure = true;
+  sessionOption.cookie.secure = true; // HTTPS Only
 }
 
 app.use(session(sessionOption));

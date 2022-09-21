@@ -74,7 +74,6 @@ router.post('/' , (req,res) => {
 
 
 
-
 // router.post('/facebook', async (req, res) => {
 //     console.log('4th chk here!!!');
 //     let getData = req.body
