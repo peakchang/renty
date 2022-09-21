@@ -8,14 +8,12 @@ const dotenv = require('dotenv');
 const passport = require('passport');
 
 
-
 // 아래 두개는 서버 관련된 보안을 알아서 해준댜
 const helmet = require('helmet');
 const hpp = require('hpp');
 
 
 dotenv.config();
-
 // 초기 DB 셋팅
 const { tableSetting } = require('./db/set_tables.js');
 tableSetting()
@@ -69,6 +67,7 @@ nunjucks.configure('views', {
 if (process.env.NODE_ENV === 'production') {
   app.enable('trust proxy');
   app.use(morgan('combined'));
+
   app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
   app.use(hpp());
 } else {

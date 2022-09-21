@@ -20,6 +20,10 @@ router.post('/zap/' , (req,res) => {
     res.send('웹훅 GET PAGE!!!!!')
 });
 
+router.get('/test', async (req, res) => {
+    res.send('sfljsildfjsldjif')
+})
+
 router.get('/', async (req, res) => {
 
 
