@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 
-router.get('/', isLoggedIn, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     
     res.render('crm/crm_main', {});
 })

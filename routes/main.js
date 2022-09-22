@@ -115,13 +115,13 @@ router.post('/policy', (req, res, next) => {
 
 
 /** 알리고 문자 발송  **/
-const sendSms = (message) => {
+const sendSms = (receivers, message) => {
     return axios.post('https://apis.aligo.in/send/', null, {
         params: {
             key: '2wyw9p9g4zzqoruwmhewiz0grwhu2w7v',
             user_id: 'adpeak',
             sender: '010-7907-1127',
-            receiver: '010-4478-1127',
+            receiver: receivers.join(','),
             msg: message,
             // 테스트모드
             testmode_yn: 'Y'
@@ -134,8 +134,8 @@ const sendSms = (message) => {
 router.get('/aligosend', (req, res, next) => {
     
     let receiveArr = ['010-4478-1127', '010-2190-2197']
-    let message = "테스트 메세지"
-    sendSms(message);
+    let message = "테스트 메세지 이렇게 발송 해봅니당 ㅎㅎ"
+    sendSms(receiveArr, message);
     res.send('알리고 메세지 발송 함!!!')
 })
 
