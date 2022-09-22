@@ -1,7 +1,7 @@
 const express = require('express');
-const { executeQuery } = require('../db&lib/dbset.js');
+const { executeQuery } = require('../db_lib/dbset.js');
 const router = express.Router();
-const sql_con = require('../db&lib');
+const sql_con = require('../db_lib');
 const axios = require('axios');
 
 const moment = require('moment');

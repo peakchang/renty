@@ -1,7 +1,7 @@
 const passport = require('passport');
 const local = require('./localStrategy');
-const { executeQuery } = require('../db&lib/dbset.js');
-const sql_con = require('../db&lib');
+const { executeQuery } = require('../db_lib/dbset.js');
+const sql_con = require('../db_lib');
 
 module.exports = () => {
   passport.serializeUser((user, done) => {

@@ -104,7 +104,22 @@
         data-modal-toggle="changTongModal">지금 바로 확인!!!!</button>
 </div>
 
+
+
+
+<script src="/db_lib/lib/front_lib.js"></script>
+
 <script>
+
+window.onload = () => {
+    // 카운트를 적용시킬 요소
+    const $counter = document.querySelector(".count");
+    
+    // 목표 수치
+    const max = 17249;
+    
+    setTimeout(() => counter($counter, max, 30), 1000);
+  }
     var typingBool = false;
     var typingIdx = 0;
 

@@ -1,8 +1,8 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-const { executeQuery } = require('../db&lib/dbset.js');
-const sql_con = require('../db&lib/index');
+const { executeQuery } = require('../db_lib/dbset.js');
+const sql_con = require('../db_lib/index');
 
 module.exports = () => {
   

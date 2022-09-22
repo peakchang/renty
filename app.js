@@ -15,7 +15,7 @@ const hpp = require('hpp');
 
 dotenv.config();
 // 초기 DB 셋팅
-const { tableSetting } = require('./db&lib/set_tables.js');
+const { tableSetting } = require('./db_lib/set_tables.js');
 tableSetting()
 
 // 라우터 불러오기
@@ -24,10 +24,6 @@ const authRouter = require('./routes/auth');
 const mainRouter = require('./routes/main');
 const webhookRouter = require('./routes/webhook');
 
-
-
-// DB SET
-// const { executeQuery } = require('./db/dbset.js');
 
 
 // 레디스 안쓸거면 주석
@@ -74,8 +70,12 @@ if (process.env.NODE_ENV === 'production') {
   app.use(morgan('dev'));
 }
 
-app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
+app.use('/lib', express.static(path.join(__dirname, 'db_lib')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
