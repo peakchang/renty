@@ -135,6 +135,7 @@ router.get('/aligosend', (req, res, next) => {
     let receiveArr = ['010-4478-1127', '010-2190-2197']
     let message = "테스트 메세지"
     sendSms(receiveArr, message);
+    res.send('알리고 메세지 발송 함!!!')
 })
 
 module.exports = router;
