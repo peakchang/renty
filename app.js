@@ -85,8 +85,8 @@ const sessionOption = {
   saveUninitialized: false,
   secret: process.env.COOKIE_SECRET,
   cookie: {
-      httpOnly: true,
-      secure: true, // if use HTTPS Set 'true' or 'false
+    httpOnly: true,
+    secure: true, // if use HTTPS Set 'true' or 'false
   },
 };
 
@@ -104,6 +104,28 @@ app.use('/', mainRouter);
 app.use('/auth', authRouter);
 app.use('/crm', crmRouter);
 app.use('/webhook', webhookRouter);
+
+// mysql test
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host: 'localhost',    // 호스트 주소
+  user: 'root',           // mysql user
+  password: 'rkwkrh13!#',       // mysql password
+  database: 'renty'         // mysql 데이터베이스
+});
+connection.connect();
+
+
+app.get('/testsql', (req, res, next) => {
+  connection.query('SELECT * FROM application_form', (err, result, fields) => {
+    if (err) throw err;
+    console.log(result);
+  })
+  res.send('liajdslifjalisdfjliaf')
+})
+
+
+
 
 
 // 라우터 없을시 에러 발생

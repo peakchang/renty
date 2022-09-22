@@ -775,6 +775,9 @@ video {
 .max-w-3xl {
   max-width: 48rem;
 }
+.max-w-md {
+  max-width: 28rem;
+}
 .border-collapse {
   border-collapse: collapse;
 }
@@ -1093,8 +1096,8 @@ video {
 .leading-tight {
   line-height: 1.25;
 }
-.leading-loose {
-  line-height: 2;
+.leading-10 {
+  line-height: 2.5rem;
 }
 .tracking-widest {
   letter-spacing: 0.1em;
@@ -1280,6 +1283,10 @@ video {
     width: 33.333333%;
   }
 
+  .lg\:max-w-2xl {
+    max-width: 42rem;
+  }
+
   .lg\:p-5 {
     padding: 1.25rem;
   }
@@ -1297,6 +1304,11 @@ video {
   .lg\:text-8xl {
     font-size: 6rem;
     line-height: 1;
+  }
+
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .lg\:text-6xl {
