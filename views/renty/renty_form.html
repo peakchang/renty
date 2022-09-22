@@ -279,19 +279,6 @@
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <div class="hidden container mx-auto max-w-4xl py-4 divide-y account_info">
                         <div class="flex items-center mb-4 justify-end same_base">
                             <input id="default-checkbox" type="checkbox" value=""
@@ -660,6 +647,7 @@
 
     const chnArr_str = '{{ set_tong.chnArr }}';
     const chnArr_arr = chnArr_str.split(',');
+    console.log(chnArr_str);
 
     chnArr_arr.forEach(ele => {
         let selectEl = document.querySelector(".chn_select");
