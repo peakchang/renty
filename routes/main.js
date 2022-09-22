@@ -121,7 +121,7 @@ const sendSms = ({ receivers, message }) => {
             key: '2wyw9p9g4zzqoruwmhewiz0grwhu2w7v',
             user_id: 'adpeak',
             sender: '010-7907-1127',
-            receiver: receivers.join(','),
+            receiver: '010-4478-1127',
             msg: message,
             // 테스트모드
             testmode_yn: 'Y'
