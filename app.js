@@ -106,21 +106,33 @@ app.use('/crm', crmRouter);
 app.use('/webhook', webhookRouter);
 
 // mysql test
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host: 'localhost',    // 호스트 주소
-  user: 'root',           // mysql user
-  password: 'rkwkrh13!#',       // mysql password
-  database: 'renty'         // mysql 데이터베이스
-});
-connection.connect();
+// var mysql = require('mysql');
+// var connection = mysql.createConnection({
+//   host: 'localhost',    // 호스트 주소
+//   user: 'root',           // mysql user
+//   password: 'rkwkrh13!#',       // mysql password
+//   database: 'renty'         // mysql 데이터베이스
+// });
+// connection.connect();
+
+const mysql = require('mysql2')
+
+const mysql_conn = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'rkwkrh13!#',
+  database: 'renty'
+})
 
 
-app.get('/testsql', (req, res, next) => {
-  connection.query('SELECT * FROM application_form', (err, result, fields) => {
-    if (err) throw err;
-    console.log(result);
-  })
+app.get('/testsql', async(req, res, next) => {
+  // connection.query('SELECT * FROM application_form', (err, result, fields) => {
+  //   if (err) throw err;
+  //   console.log(result);
+  // })
+  let queryString = 'SELECT * FROM application_form';
+  const results = await mysql_conn.promise().query(queryString)
+  console.log(results[0]);
   res.send('liajdslifjalisdfjliaf')
 })
 
