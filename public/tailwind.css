@@ -1241,22 +1241,12 @@ video {
     color: rgb(156 163 175 / var(--tw-placeholder-opacity));
   }
 
-  .dark\:ring-offset-gray-700 {
-    --tw-ring-offset-color: #374151;
-  }
-
   .dark\:ring-offset-gray-800 {
     --tw-ring-offset-color: #1f2937;
   }
 
-  .dark\:hover\:bg-gray-600:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(75 85 99 / var(--tw-bg-opacity));
-  }
-
-  .dark\:hover\:text-white:hover {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
+  .dark\:ring-offset-gray-700 {
+    --tw-ring-offset-color: #374151;
   }
 
   .dark\:focus\:border-blue-500:focus {
