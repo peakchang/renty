@@ -3,7 +3,7 @@ const fs = require('fs');
 const { executeQuery } = require('../db/dbset.js');
 const axios = require('axios');
 const router = express.Router();
-
+const mysql_conn = require('../db');
 
 /** 알리고 문자 발송  **/
 const sendSms = (receivers, message) => {
@@ -75,7 +75,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/' , (req,res) => {
+router.post('/' , async (req,res) => {
     var nowDateTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     let getData = req.body
     console.log('Zap request body:', getData);
@@ -87,8 +87,9 @@ router.post('/' , (req,res) => {
 
     let getArr = [get_form_name,get_full_name,get_phone,nowDateTime];
     let formInertSql = `INSERT INTO application_form (form_name,mb_name,mb_phone,created_at) VALUES (?,?,?,?);`;
+
+    await mysql_conn.promise().query(formInertSql, getArr)
     
-    executeQuery(formInertSql, getArr);
     console.log('success!!!!!');
     res.send('zapzaapapapapapapap')
 })
