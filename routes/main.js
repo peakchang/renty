@@ -1,7 +1,7 @@
 const express = require('express');
-const { executeQuery } = require('../db/dbset.js');
+const { executeQuery } = require('../db&lib/dbset.js');
 const router = express.Router();
-const sql_con = require('../db');
+const sql_con = require('../db&lib');
 const axios = require('axios');
 
 const moment = require('moment');
@@ -13,14 +13,7 @@ moment.tz.setDefault("Asia/Seoul");
 
 
 router.get('/', (req, res, next) => {
-    try {
-        console.log(req.user.nick);
-        userInfo = { 'user': req.user, 'req': req };
-    } catch {
-        userInfo = {}
-    }
-
-    res.render('renty/renty_main', { userInfo });
+    res.render('renty/renty_main');
 })
 
 
@@ -32,10 +25,13 @@ router.post('/reviewconfig', (req, res, next) => {
     res.render('review_config')
 })
 
-router.get('/form', (req,res, next) => {
-    console.log(req.query);
 
-    const setTong = req.query.t;
+
+router.get('/form/:id', (req,res, next) => {
+    console.log(req.params);
+
+    const setTong = req.params.id;
+    console.log(setTong);
     if(setTong == 'sk'){
         var rapidArr = ['100M', '500M', '1G'];
         var chnArr = ['이코노미TV', '스탠다드TV', 'BTV ALL', '인터넷 단독'];
@@ -53,16 +49,11 @@ router.get('/form', (req,res, next) => {
         var chnArr = ['SKY ALL', 'SKY 포인트', '인터넷 단독'];
     }
 
-    const set_tong = {chk: req.query.t, rapidArr, chnArr}
+    const set_tong = {chk: req.params.id, rapidArr, chnArr}
 
 
     console.log('진입!!!');
     res.render('renty/renty_form', { set_tong });
-})
-
-router.get('/success', (req,res, next) => {
-    console.log('진입!!! 성공!!!!!!!!!!!!!!!!!!');
-    res.render('renty/renty_form_success', {});
 })
 
 
@@ -111,32 +102,6 @@ router.get('/policy', (req, res, next) => {
 
 router.post('/policy', (req, res, next) => {
     res.render('renty/renty_policy');
-})
-
-
-/** 알리고 문자 발송  **/
-const sendSms = (receivers, message) => {
-    return axios.post('https://apis.aligo.in/send/', null, {
-        params: {
-            key: '2wyw9p9g4zzqoruwmhewiz0grwhu2w7v',
-            user_id: 'adpeak',
-            sender: '010-7907-1127',
-            receiver: receivers.join(','),
-            msg: message,
-            // 테스트모드
-            testmode_yn: 'Y'
-        },
-    }).then((res) => res.data).catch(err => {
-        console.log('err', err);
-    });
-}
-
-router.get('/aligosend', (req, res, next) => {
-    
-    let receiveArr = ['010-4478-1127', '010-2190-2197']
-    let message = "테스트 메세지 이렇게 발송 해봅니당 ㅎㅎ"
-    sendSms(receiveArr, message);
-    res.send('알리고 메세지 발송 함!!!')
 })
 
 module.exports = router;

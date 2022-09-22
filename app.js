@@ -15,7 +15,7 @@ const hpp = require('hpp');
 
 dotenv.config();
 // 초기 DB 셋팅
-const { tableSetting } = require('./db/set_tables.js');
+const { tableSetting } = require('./db&lib/set_tables.js');
 tableSetting()
 
 // 라우터 불러오기
@@ -104,41 +104,6 @@ app.use('/', mainRouter);
 app.use('/auth', authRouter);
 app.use('/crm', crmRouter);
 app.use('/webhook', webhookRouter);
-
-// mysql test
-// var mysql = require('mysql');
-// var connection = mysql.createConnection({
-//   host: 'localhost',    // 호스트 주소
-//   user: 'root',           // mysql user
-//   password: 'rkwkrh13!#',       // mysql password
-//   database: 'renty'         // mysql 데이터베이스
-// });
-// connection.connect();
-
-const mysql = require('mysql2')
-
-const mysql_conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'rkwkrh13!#',
-  database: 'renty'
-})
-
-
-app.get('/testsql', async(req, res, next) => {
-  // connection.query('SELECT * FROM application_form', (err, result, fields) => {
-  //   if (err) throw err;
-  //   console.log(result);
-  // })
-  let queryString = 'SELECT * FROM application_form';
-  const results = await mysql_conn.promise().query(queryString)
-  console.log(results[0]);
-  res.send('liajdslifjalisdfjliaf')
-})
-
-
-
-
 
 // 라우터 없을시 에러 발생
 app.use((req, res, next) => {

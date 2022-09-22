@@ -1,6 +1,6 @@
 const express = require('express');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
-const { executeQuery } = require('../db/dbset.js');
+const { executeQuery } = require('../db&lib/dbset.js');
 
 
 const router = express.Router();
