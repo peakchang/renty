@@ -6,6 +6,10 @@
     .form_fixed_change_tong {
         display: none;
     }
+
+    .topback1 {
+        background: linear-gradient(#e97bff, #5586EB, #4374D9);
+    }
 </style>
 
 <!-- <div class="text-center text-2xl font-bold text-red-800 my-4" data-aos="fade-down" data-aos-duration="500">
@@ -27,9 +31,69 @@
 
 
 
-<div class="text-center">
-    <img src="/img/renty_base/renty_main_temp.jpg" alt="" class="mx-auto">
+<div class="text-center topback1 pt-10">
+    <div class="chk_test1 hidden">3년마다 돈받는 재테크</div>
+    <div class="title_three_typing text-2xl lg:text-5xl font-extrabold my-2 text-white"></div>
+    <div class="font-extrabold my-4 text-5xl lg:text-8xl text-white" data-aos="fade-up" data-aos-duration="500"
+        data-aos-delay="1200">렌티에서!</div>
+    <div class="mt-5 leading-loose text-2xl lg:text-5xl text-white" data-aos="flip-up" data-aos-duration="800"
+        data-aos-delay="1200">
+        <span><i class="fa fa-check-circle-o" aria-hidden="true"></i> 요금, A/S 및 설치는 본사 동일</span><br>
+        <span><i class="fa fa-check-circle-o" aria-hidden="true"></i> 상담은 3사 통합상담</span><br>
+        <span><i class="fa fa-check-circle-o" aria-hidden="true"></i> 사은품은 압도적으로 더 많~이</span><br>
+    </div>
+    <img src="/img/renty_base/main_people.png" alt="" class="mx-auto max-w-3xl w-full mt-7" data-aos="fade-up">
 </div>
+
+
+<div class="p-6">
+    <div class="max-w-3xl mx-auto">
+        <img src="/img/renty_base/logo_img.png" alt="" class="" style="max-width: 120px;">
+
+
+        <div class="text-center text-3xl lg:text-6xl my-5 font-bold">
+            왜 렌티인가요?!
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class="">
+        <table class="w-full max-w-2xl mx-auto">
+            <tr class="lg:text-2xl testaos" data-aos="flip-up" data-aos-duration="1000">
+                <td class="px-4 py-3 lg:py-6" style="min-width: 50px;"><i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                </td>
+                <td>
+                    많은 신청 건수로 증명한 확실한 업체!
+                </td>
+            </tr>
+
+            <tr class="lg:text-2xl testaos" data-aos="flip-up" data-aos-duration="1000">
+                <td class="px-4 py-3 lg:py-6" style="min-width: 50px;"><i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                </td>
+                <td>
+                    누적 신청건수 <span class="text-red-500">247건!</span> <br>
+                    누적 사은품 지급 금액 <span class="text-red-500">98,800,000원!</span> 
+                </td>
+            </tr>
+            <tr class=" lg:text-2xl" data-aos="flip-up" data-aos-duration="1000">
+                <td class="px-4 py-3 lg:py-6" style="max-width: 30px;"><i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                </td>
+                <td>
+                    후기 작성시 5만원 상당 사은품 증정! 비교불가 혜택!!
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+
+
+
 <!-- <div class="text-center">
     <img src="/img/renty_base/renty_main2.png" alt="" class="mx-auto">
 </div> -->
@@ -41,7 +105,43 @@
 </div>
 
 <script>
+    var typingBool = false;
+    var typingIdx = 0;
+
+    // 타이핑될 텍스트를 가져온다 
+    var typingTxt = $(".chk_test1").text();
+    console.log(typingTxt);
+
+    typingTxt = typingTxt.split(""); // 한글자씩 자른다. 
+
+    if (typingBool == false) {
+        // 타이핑이 진행되지 않았다면 
+        typingBool = true;
+        var tyInt = setInterval(typing, 100); // 반복동작 
+    }
+
+    function typing() {
+        if (typingIdx < typingTxt.length) {
+            // 타이핑될 텍스트 길이만큼 반복 
+            $(".title_three_typing").append(typingTxt[typingIdx]);
+            // 한글자씩 이어준다. 
+            typingIdx++;
+        } else {
+            //끝나면 반복종료 
+            clearInterval(tyInt);
+        }
+    }
+
+
     AOS.init();
+
+
+    const testaos = document.querySelector('.testaos');
+    testaos.addEventListener('transitionend', () => {
+        console.log('animated in');
+    });
+
+
 </script>
 
 
