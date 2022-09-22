@@ -1,7 +1,7 @@
 const express = require('express');
 const { executeQuery } = require('../db/dbset.js');
 const router = express.Router();
-
+const sql_con = require('../db');
 const axios = require('axios');
 
 const moment = require('moment');
@@ -91,7 +91,7 @@ router.post('/success', async (req,res, next) => {
     let formInertSql = `INSERT INTO application_form (itn_item,tv_item,item_other,mb_name,mb_phone,mb_phone_cpn,mb_regnum,mb_email,mb_address,mb_pay_type,mb_bank_cpn,mb_bank_accountnum,mb_bank_name,mb_bank_regnum,mb_card_cpn,mb_card_cardnum,mb_card_name,mb_card_validity,mb_gift_bankname,mb_gift_accountnum,mb_gift_name,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);`;
 
     if(getVal.itn_item){
-        await executeQuery(formInertSql, valueArr);
+        await sql_con.promise().query(formInertSql, valueArr)
     }
     
 

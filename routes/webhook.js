@@ -1,11 +1,32 @@
 const express = require('express');
 const fs = require('fs');
 const { executeQuery } = require('../db/dbset.js');
-
+const axios = require('axios');
 const router = express.Router();
+
+
+/** 알리고 문자 발송  **/
+const sendSms = (receivers, message) => {
+    return axios.post('https://apis.aligo.in/send/', null, {
+        params: {
+            key: process.env.ALIGOKEY,
+            user_id: process.env.ALIGOID,
+            sender: process.env.SENDER,
+            receiver: receivers.join(','),
+            msg: message,
+            // 테스트모드
+            testmode_yn: 'Y'
+        },
+    }).then((res) => res.data).catch(err => {
+        console.log('err', err);
+    });
+}
 
 var token = process.env.TOKEN || 'token';
 var received_updates = [];
+
+
+
 
 const moment = require('moment');
 require('moment-timezone');
@@ -68,9 +89,6 @@ router.post('/' , (req,res) => {
     let formInertSql = `INSERT INTO application_form (form_name,mb_name,mb_phone,created_at) VALUES (?,?,?,?);`;
     
     executeQuery(formInertSql, getArr);
-
-    
-
     console.log('success!!!!!');
     res.send('zapzaapapapapapapap')
 })
