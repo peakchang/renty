@@ -3,9 +3,9 @@
 {% block renty_content %}
 
 <style>
-    /* .form_fixed_change_tong {
+    .form_fixed_change_tong {
         display: none;
-    } */
+    }
 </style>
 
 <!-- <div class="text-center text-2xl font-bold text-red-800 my-4" data-aos="fade-down" data-aos-duration="500">
@@ -24,6 +24,9 @@
 
  -->
 
+
+
+
 <div class="text-center">
     <img src="/img/renty_base/renty_main_temp.jpg" alt="" class="mx-auto">
 </div>
@@ -32,13 +35,20 @@
 </div> -->
 
 <div class="fixed bottom-5 left-0 text-center w-full z-40">
-    <button class="my-10 py-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-2/4 md:w-1/3  text-2xl animate-bounce" data-modal-toggle="changTongModal">지금 바로 확인!</button>
+    <button
+        class="my-10 py-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-2/4 md:w-1/3  text-2xl animate-bounce"
+        data-modal-toggle="changTongModal">지금 바로 확인!!!!</button>
 </div>
 
 <script>
     AOS.init();
 </script>
 
+
+
 {% include "renty/renty_change_tong.html" %}
+
+{% include "renty/renty_review_main.html" %}
+
 
 {% endblock %}

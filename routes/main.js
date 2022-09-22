@@ -26,9 +26,6 @@ router.post('/', (req, res, next) => {
     res.send(200);
 })
 
-
-
-
 router.get('/form', (req,res, next) => {
     console.log('진입!!!');
     res.render('renty/renty_form', {});
@@ -70,6 +67,12 @@ router.post('/success', async (req,res, next) => {
     
 
     res.render('renty/renty_form_success', {});
+})
+
+
+router.get('/review', (req,res, next) => {
+    console.log('진입!!!');
+    res.render('renty/renty_review', {});
 })
 
 

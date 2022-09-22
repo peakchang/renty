@@ -1,0 +1,104 @@
+<style>
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 30px;
+    }
+
+    .overText {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .chkimgcss{display: flex; justify-content: center; align-items: center;}
+</style>
+
+
+<!-- Swiper -->
+<div class="swiper">
+    <div class="swiper-wrapper">
+        {% for i in range(0, 7) %}
+        <div class="swiper-slide p-3 lg:p-5 max-h-72">
+            <a href="">
+                <div
+                    class="w-full h-full rounded-xl bg-white border border-solid border-gray-300 p-2   max-w-xs">
+                    <div class="rounded-xl border border-solid border-gray-300 overflow-hidden h-2/3 chkimgcss">
+                        <img src="/img/sample/review/2-1.JPG" alt="">
+                    </div>
+
+                    <div class="overflow-hidden overText" style="padding-top: 6px; height: 60px;">
+                        Lorem, ipsum dolor sit amet Doloribus, reprehenderit voluptate eaque
+                        rerum illo dolorum exercitationem numquam recusandae dolores ad sed. Quidem expedita ipsa
+                        aspernatur
+                        alias? Vel quas ad laboriosam?
+                    </div>
+
+
+
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span class="inliin-block">
+                            <img class="w-5 h-5 rounded-full" src="/img/sample/review/profile_base.jpg" alt="">
+                        </span>
+
+                        <span class="inliin-block ml-2">박*용</span>
+                        <span class="ml-1">|</span>
+                        <span class="inliin-block ml-1">2197</span>
+                        <span class="ml-1">|</span>
+                        <span class="inliin-block ml-1">22.09.21</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+        {% endfor %}
+
+        <div class="swiper-slide p-3 lg:p-5 max-h-72">
+            <a href="">
+                <div
+                    class="w-full h-full rounded-xl bg-white border border-solid border-gray-300 p-2 overflow-hidden flex justify-center items-center">
+
+                    <div class="text-center border border-solid border-gray-300 rounded-full p-4" style="width: 80px;">더보기<br><i class="fa fa-plus" aria-hidden="true"></i></div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper', {
+        slidesPerView: 3,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            "@0.00": {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            "@1.00": {
+                slidesPerView: 3,
+                spaceBetween: 10,
+            },
+
+            "@1.50": {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+        },
+    });
+
+</script>
