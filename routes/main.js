@@ -3,6 +3,7 @@ const { executeQuery } = require('../db/dbset.js');
 const router = express.Router();
 
 const moment = require('moment');
+const { render } = require('nunjucks');
 require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
 
@@ -26,9 +27,40 @@ router.post('/', (req, res, next) => {
     res.send(200);
 })
 
+router.get('/reviewconfig', (req, res, next) => {
+    res.render('review_config')
+})
+
+router.post('/reviewconfig', (req, res, next) => {
+    res.render('review_config')
+})
+
 router.get('/form', (req,res, next) => {
+    console.log(req.query);
+
+    const setTong = req.query.t;
+    if(setTong == 'sk'){
+        var rapidArr = ['100M', '500M', '1G'];
+        var chnArr = ['이코노미TV', '스탠다드TV', 'BTV ALL', '인터넷 단독'];
+    }else if(setTong == 'kt'){
+        var rapidArr = ['100M', '500M', '1G'];
+        var chnArr = ['베이직TV', '라이트TV', '에센스TV', '인터넷 단독'];
+    }else if(setTong == 'lg'){
+        var rapidArr = ['100M', '500M', '1G'];
+        var chnArr = ['베이직TV', '프리미엄TV', '프리미엄디즈니TV', '인터넷 단독'];
+    }else if(setTong == 'hello'){
+        var rapidArr = ['160M', '500M', '1G'];
+        var chnArr = ['이코노미TV', '스탠다드TV', 'BTV ALL', '인터넷 단독'];
+    }else if(setTong == 'sky'){
+        var rapidArr = ['100M', '200M', '500M', '1G'];
+        var chnArr = ['이코노미TV', '스탠다드TV', 'BTV ALL', '인터넷 단독'];
+    }
+
+    const set_tong = {chk: req.query.t, rapidArr, chnArr}
+
+
     console.log('진입!!!');
-    res.render('renty/renty_form', {});
+    res.render('renty/renty_form', { set_tong });
 })
 
 router.get('/success', (req,res, next) => {

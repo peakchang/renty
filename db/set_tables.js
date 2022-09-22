@@ -75,6 +75,20 @@ exports.tableSetting = async () => {
     }
 
 
+    let makereviewTable = `CREATE TABLE IF NOT EXISTS reviews(
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        rv_name VARCHAR(50),
+        rv_phone VARCHAR(50),
+        rv_content TEXT,
+        rv_created_at DATETIME
+    );`
+    try {
+        sql_con.query(makereviewTable, async (err, result) => { });
+    } catch (err) {
+        console.error(err);
+    }
+
+
 
     
 

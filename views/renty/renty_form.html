@@ -23,9 +23,8 @@
 </style>
 
 
-
 <div class="container mx-auto max-w-4xl">
-    <img src="/img/renty_table/sk_home&free.png" alt="" class="w-full mx-auto" style="max-width: 800px;">
+    <img src="/img/itn/{{ set_tong.chk }}/main.jpg" alt="" class="w-full mx-auto" style="max-width: 800px;">
 </div>
 
 
@@ -61,11 +60,8 @@
                     <div class="col-span-3 text-center flex items-center justify-center">인터넷 속도</div>
                     <div class="col-span-5">
                         <select
-                            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow rapid_select"
                             name="itn_item" id="">
-                            <option value="100M">100M</option>
-                            <option value="500M">500M</option>
-                            <option value="1G">1G</option>
                         </select>
                     </div>
                 </div>
@@ -74,11 +70,8 @@
                     <div class="col-span-3 text-center flex items-center justify-center">TV 상품</div>
                     <div class="col-span-5">
                         <select
-                            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow chn_select"
                             name="tv_item" id="">
-                            <option value="100M">뉴베이직 TV</option>
-                            <option value="500M">라이트 TV</option>
-                            <option value="1G">ALL TV</option>
                         </select>
                     </div>
                 </div>
@@ -140,7 +133,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center flex items-center justify-center text-sm">핸드폰</div>
@@ -171,7 +164,8 @@
                                         <div class="flex items-center pl-3">
                                             <input id="horizontal-list-radio-license" type="radio" value=""
                                                 name="mb_phone_cpn"
-                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" checked>
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                                                checked>
                                             <label for="horizontal-list-radio-license"
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">SK</label>
                                         </div>
@@ -179,7 +173,8 @@
                                     <li
                                         class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                                         <div class="flex items-center pl-3">
-                                            <input id="horizontal-list-radio-id" type="radio" value="" name="mb_phone_cpn"
+                                            <input id="horizontal-list-radio-id" type="radio" value=""
+                                                name="mb_phone_cpn"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                             <label for="horizontal-list-radio-id"
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">KT</label>
@@ -474,7 +469,8 @@
                             <div class="grid grid-cols-8 py-2">
                                 <div class="col-span-2 text-center flex items-center justify-center text-sm">카드번호</div>
                                 <div class="col-span-6">
-                                    <input type="text" name="mb_card_cardnum" id="default-input" placeholder="문의 사항을 입력해주세요"
+                                    <input type="text" name="mb_card_cardnum" id="default-input"
+                                        placeholder="문의 사항을 입력해주세요"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
                                 </div>
                             </div>
@@ -650,6 +646,28 @@
 
 
 <script>
+
+    const rapid_str = '{{ set_tong.rapidArr }}';
+    const rapid_arr = rapid_str.split(',')
+
+    rapid_arr.forEach(ele => {
+        let selectEl = document.querySelector(".rapid_select");
+        var objOption = document.createElement('option');
+        objOption.text = ele
+        objOption.value = ele
+        selectEl.options.add(objOption);
+    });
+
+    const chnArr_str = '{{ set_tong.chnArr }}';
+    const chnArr_arr = chnArr_str.split(',');
+
+    chnArr_arr.forEach(ele => {
+        let selectEl = document.querySelector(".chn_select");
+        var objOption = document.createElement('option');
+        objOption.text = ele
+        objOption.value = ele
+        selectEl.options.add(objOption);
+    });
 
     let chkCookie = getCookie('startMd')
     if (chkCookie != 'expire') {
