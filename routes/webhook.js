@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
 router.post('/' , async (req,res) => {
     var nowDateTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     let getData = req.body
-    
+
     console.log('아니 씨발탱 안되는거야 뭐야??????????????????');
     const setData = getData[0];
     let get_form_name = setData.form_name;
@@ -51,7 +51,7 @@ router.post('/' , async (req,res) => {
 
     if(get_form_name.includes('인터넷')){
         var form_type_in = '인터넷'
-        sendSms(get_phone, '테스트 메세지 입니다.')
+        await sendSms(get_phone, '테스트 메세지 입니다.')
     }else if(get_form_name.includes('분양')){
         var form_type_in = '분양'
     }else{
