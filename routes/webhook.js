@@ -17,14 +17,14 @@ moment.tz.setDefault("Asia/Seoul");
 
 router.get('/', async (req, res) => {
 
-    let temp_phone = "+821021902197"
-    if(temp_phone.includes('+820')){
-        var get_phone = temp_phone.replace('+820', '0')
-    }else{
-        var get_phone = temp_phone.replace('+82', '0')
-    }
-    console.log(get_phone);
-    await sendSms(get_phone, '테스트 메세지 입니다.')
+    // let temp_phone = "+821021902197"
+    // if(temp_phone.includes('+820')){
+    //     var get_phone = temp_phone.replace('+820', '0')
+    // }else{
+    //     var get_phone = temp_phone.replace('+82', '0')
+    // }
+    // console.log(get_phone);
+    // await sendSms(get_phone, '테스트 메세지 입니다.')
 
     // let testSql = `SELECT * FROM application_form`;
     // let getTestVal = await mysql_conn.promise().query(testSql)
@@ -61,13 +61,17 @@ router.post('/' , async (req,res) => {
         var get_phone = temp_phone.replace('+82', '0')
     }
 
+    console.log(get_phone);
     if(get_form_name.includes('인터넷')){
         var form_type_in = '인터넷'
+        console.log('인터넷 포함!!');
         await sendSms(get_phone, '테스트 메세지 POST로 발송 합니다!!! 입니다.')
     }else if(get_form_name.includes('분양')){
+        console.log('분양 포함!!');
         var form_type_in = '분양'
     }else{
         var form_type_in = '미정'
+        console.log('암것도 포함 안됨!!');
         await sendSms(get_phone, '테스트 메세지 POST로 발송 합니다!!! 입니다.')
     }
 
