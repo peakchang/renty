@@ -6,6 +6,7 @@ const session = require('express-session');
 const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
 const passport = require('passport');
+const dateFilter = require('nunjucks-date-filter');
 
 
 // 아래 두개는 서버 관련된 보안을 알아서 해준댜
@@ -57,6 +58,10 @@ nunjucks.configure('views', {
   express: app,
   watch: true,
 });
+
+const env = new nunjucks.Environment();
+env.addFilter('date', dateFilter);
+
 
 
 

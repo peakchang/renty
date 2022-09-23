@@ -25,9 +25,11 @@
     <img src="/img/renty_base/review_top.png" alt="" class="w-full">
 </div>
 
+<!-- {{ allReviews }} -->
 <ul class="divide-y px-3">
 
-    <li class="h-20 max-w-3xl mx-auto py-1">
+    {% for review in all_reviews %}
+    <li class="h-20 max-w-3xl mx-auto py-1 cursor-pointer">
         <div class="h-full float-left overflow-hidden chkimgcss mr-4 rounded-xl">
             <img src="/img/sample/review/2-1.JPG" alt="" class="w-full">
         </div>
@@ -36,20 +38,20 @@
                 <span class="inliin-block">
                     <img class="w-5 h-5 rounded-full" src="/img/sample/review/profile_base.jpg" alt="">
                 </span>
-                <span class="inliin-block ml-2">박*용</span>
+                <span class="inliin-block ml-2">{{ review.rv_name }}</span>
                 <span class="ml-1">|</span>
-                <span class="inliin-block ml-1">2197</span>
-                <span class="ml-1">|</span>
-                <span class="inliin-block ml-1">22.09.21</span>
-            </div>
+                <span class="inliin-block ml-1">{{ review.rv_created_at }}</span>
+            </div >
             <div class="break-all overText overflow-hidden pr-8 text-sm">
-                아버님이 너무 좋아하세요 ㅎㅎ
+            {{ review.rv_content }}
             </div>
         </div>
     </li>
+    {% endfor %}
 
 
-    <li class="h-20 max-w-3xl mx-auto py-1">
+
+    <!-- <li class="h-20 max-w-3xl mx-auto py-1">
         <div class="h-full float-left overflow-hidden chkimgcss mr-4 rounded-xl">
             <img src="/img/sample/review/2-1.JPG" alt="" class="w-full">
         </div>
@@ -68,7 +70,7 @@
                 우여곡절 끝에 신청 했습니다 ㅎㅎ 이러쿵 저러쿵 이구요~~ 이렇게 되고 저렇게 된 부분들이 너무 좋았던것 같아요 앞으로도 자주 이용하도록 하겠습니다 ^^
             </div>
         </div>
-    </li>
+    </li> -->
 
 </ul>
 

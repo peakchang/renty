@@ -102,9 +102,33 @@ router.post('/success', async (req,res, next) => {
 })
 
 
-router.get('/review', (req,res, next) => {
-    console.log('진입!!!');
-    res.render('renty/renty_review', {});
+router.get('/review', async (req,res, next) => {
+
+    const reviewSql = `SELECT * FROM reviews;`;
+    const reviewDatas = await mysql_conn.promise().query(reviewSql);
+    const all_reviews = reviewDatas[0]
+    // console.log(all_reviews);
+
+    for await(const [ i, review ] of all_reviews.entries() ) {
+        console.log(review);
+        console.log(i);
+        let getDate = review.rv_created_at.getDate()
+        let getMonth = review.rv_created_at.getMonth() + 1
+        let getFullYear = review.rv_created_at.getFullYear()
+        let setDate = getFullYear + "." + getMonth + "." + getDate;
+        review.rv_created_at = setDate
+
+        let firstStr = review.rv_name.charAt(0);
+        let lastStr = review.rv_name.charAt(review.rv_name.length - 1);
+        let setName = firstStr + '*' + lastStr;
+        review.rv_name = setName
+        
+        var myRegExp1 = /<IMG(.*?)>/gi;
+        review.rv_content = review.rv_content.replace(myRegExp1, '');
+    }
+
+    console.log(all_reviews);
+    res.render('renty/renty_review', { all_reviews });
 })
 
 
