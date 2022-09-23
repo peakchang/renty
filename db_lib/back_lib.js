@@ -12,7 +12,7 @@ exports.sendSms = (receivers, message) => {
             receiver: receivers,
             msg: message,
             // 테스트모드
-            testmode_yn: 'Y'
+            testmode_yn: 'N'
         },
     }).then((res) => res.data).catch(err => {
         console.log('err', err);

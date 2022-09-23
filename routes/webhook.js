@@ -4,7 +4,7 @@ const { executeQuery } = require('../db_lib/dbset.js');
 const axios = require('axios');
 const router = express.Router();
 const mysql_conn = require('../db_lib');
-const { sendSms }  = require('../db_lib/back_lib');
+const { sendSms } = require('../db_lib/back_lib');
 
 
 var token = process.env.TOKEN || 'token';
@@ -17,14 +17,20 @@ moment.tz.setDefault("Asia/Seoul");
 
 router.get('/', async (req, res) => {
 
-    // let temp_phone = "+821021902197"
-    // if(temp_phone.includes('+820')){
-    //     var get_phone = temp_phone.replace('+820', '0')
-    // }else{
-    //     var get_phone = temp_phone.replace('+82', '0')
-    // }
-    // console.log(get_phone);
-    // await sendSms(get_phone, '테스트 메세지 입니다.')
+    let byteString = `인터넷 초특가 렌티입니다. 사이트를 확인해주세요 renty.co.kr`;
+    let byteLength = 0;
+    //정규식으로 Byte계산
+    byteLength = byteString.replace(/[\0-\x7f]:([0-\u07ff]:(.))/g, "$&$1$2").length;
+    console.log(byteLength + " Bytes");
+
+    let temp_phone = "+821021902197"
+    if(temp_phone.includes('+820')){
+        var get_phone = temp_phone.replace('+820', '0')
+    }else{
+        var get_phone = temp_phone.replace('+82', '0')
+    }
+    console.log(get_phone);
+    await sendSms(get_phone, byteString)
 
     // let testSql = `SELECT * FROM application_form`;
     // let getTestVal = await mysql_conn.promise().query(testSql)
@@ -43,11 +49,12 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/' , async (req,res) => {
+router.post('/', async (req, res) => {
+
+    const sendMsg = `인터넷 초특가 렌티입니다. 사이트를 확인해주세요 renty.co.kr`;
     var nowDateTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     let getData = req.body
 
-    console.log('아니 씨발탱 안되는거야 뭐야??????????????????');
     console.log(getData);
     const setData = getData[0];
     console.log(setData);
@@ -55,24 +62,23 @@ router.post('/' , async (req,res) => {
     let get_form_name = setData.form_name;
     let get_full_name = setData.full_name;
     let temp_phone = setData.phone_number;
-    if(temp_phone.includes('+820')){
+    if (temp_phone.includes('+820')) {
         var get_phone = temp_phone.replace('+820', '0')
-    }else{
+    } else {
         var get_phone = temp_phone.replace('+82', '0')
     }
 
     console.log(get_phone);
-    if(get_form_name.includes('인터넷')){
+    if (get_form_name.includes('인터넷')) {
         var form_type_in = '인터넷'
         console.log('인터넷 포함!!');
-        await sendSms(get_phone, '테스트 메세지 POST로 발송 합니다!!! 입니다.')
-    }else if(get_form_name.includes('분양')){
+        await sendSms(get_phone, sendMsg)
+    } else if (get_form_name.includes('분양')) {
         console.log('분양 포함!!');
         var form_type_in = '분양'
-    }else{
+    } else {
         var form_type_in = '미정'
         console.log('암것도 포함 안됨!!');
-        await sendSms(get_phone, '테스트 메세지 POST로 발송 합니다!!! 입니다.')
     }
 
     let getArr = [get_form_name, form_type_in, get_full_name, get_phone, nowDateTime];
