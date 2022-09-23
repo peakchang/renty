@@ -1,7 +1,7 @@
 const express = require('express');
 const { executeQuery } = require('../db_lib/dbset.js');
 const router = express.Router();
-const sql_con = require('../db_lib');
+const mysql_conn = require('../db_lib');
 const axios = require('axios');
 
 const moment = require('moment');
@@ -18,11 +18,26 @@ router.get('/', (req, res, next) => {
 
 
 router.get('/reviewconfig', (req, res, next) => {
-    res.render('review_config')
+    console.log(typeof(moment.utc().format('YYYY-MM-DD HH:mm:ss Z')));
+    
+    res.render('renty/review_config')
 })
 
-router.post('/reviewconfig', (req, res, next) => {
-    res.render('review_config')
+router.post('/reviewconfig', async (req, res, next) => {
+    console.log(req.body.rv_name);
+    console.log(req.body.rv_phone);
+    console.log(req.body.rv_created_at);
+    console.log(req.body.rv_content);
+    var setDateTime = moment(req.body.rv_created_at).format('YYYY-MM-DD HH:mm:ss');
+    // var nowDateTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+    const tempSqlArr = [req.body.rv_name, req.body.rv_phone, req.body.rv_content, setDateTime];
+
+
+    const tempInserSql = `INSERT INTO reviews (rv_name, rv_phone, rv_content, rv_created_at) VALUES (?,?,?,?);`;
+
+    await mysql_conn.promise().query(tempInserSql, tempSqlArr)
+    
+    res.render('renty/review_config')
 })
 
 
@@ -49,10 +64,7 @@ router.get('/form/:id', (req,res, next) => {
         var chnArr = ['SKY ALL', 'SKY 포인트', '인터넷 단독'];
     }
 
-    const set_tong = {chk: req.params.id, rapidArr, chnArr}
-
-
-    console.log('진입!!!');
+    const set_tong = {chk: req.params.id, rapidArr, chnArr};
     res.render('renty/renty_form', { set_tong });
 })
 

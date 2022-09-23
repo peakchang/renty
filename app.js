@@ -15,8 +15,8 @@ const hpp = require('hpp');
 
 dotenv.config();
 // 초기 DB 셋팅
-const { tableSetting } = require('./db_lib/set_tables.js');
-tableSetting()
+// const { tableSetting } = require('./db_lib/set_tables.js');
+// tableSetting()
 
 // 라우터 불러오기
 const crmRouter = require('./routes/crm');

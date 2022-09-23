@@ -1,6 +1,7 @@
 .env
 node_modules/
-uploads/
+uploads/editor/
+!temp/
 *.log
 coverage
 combined.log

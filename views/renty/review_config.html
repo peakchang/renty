@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="/lib/front_lib.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post">
+
+        <div style="margin-top: 20px;">
+            이름 : <input type="text" name="rv_name">
+            번호 : <input type="text" name="rv_phone">
+            날짜 : <input type="date" name="rv_created_at" id="">
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button type="button" class="copy_p">P 태그 복사</button>
+            <button type="button" class="copy_img">IMG 태그 복사</button>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <textarea name="rv_content" id="" cols="60" rows="10"></textarea>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center;">
+            <button>업로드</button>
+        </div>
+
+    </form>
+
+    <script>
+        $('.copy_p').click(() => {
+            cliboardCopy('<p></p>');
+        })
+        $('.copy_img').click(() => {
+            cliboardCopy('<img src="/img/temp/이미지이름" alt="">');
+        })
+    </script>
+
+</body>
+
+</html>

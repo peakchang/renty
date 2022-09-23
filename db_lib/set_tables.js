@@ -1,3 +1,5 @@
+const { now } = require('moment');
+const nodemon = require('nodemon');
 const sql_con = require('./index');
 
 
@@ -80,13 +82,18 @@ exports.tableSetting = async () => {
         rv_name VARCHAR(50),
         rv_phone VARCHAR(50),
         rv_content TEXT,
-        rv_created_at DATETIME
+        rv_created_at DATETIME DEFAULT NOW()
     );`
     try {
         sql_con.query(makereviewTable, async (err, result) => { });
     } catch (err) {
         console.error(err);
     }
+
+    let setSql = `ALTER TABLE reviews MODIFY rv_created_at DEFAULT ON UPDATE CURRENT_TIMESTAMP;`
+    sql_con.query(setSql, (err, result) => { });
+
+    // ALTER TABLE reviews ADD CONSTRAINT rv_created_at DEFAULT ON UPDATE CURRENT_TIMESTAMP;;
 
 
 

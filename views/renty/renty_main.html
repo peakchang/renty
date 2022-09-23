@@ -46,7 +46,7 @@
 </div>
 
 
-<div class="p-6">
+<div class="p-6 hidden">
     <div class="max-w-3xl mx-auto">
         <img src="/img/renty_base/logo_img.png" alt="" class="" style="max-width: 120px;">
 
@@ -64,23 +64,28 @@
     <div class="">
         <table class="w-full max-w-md lg:max-w-2xl mx-auto">
             <tr class="lg:text-2xl testaos" data-aos="flip-up" data-aos-duration="1000">
-                <td class="px-4 py-3 lg:py-6" style="min-width: 50px;"><i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                <td class="px-4 py-3 lg:py-6" style="min-width: 50px;"><i class="fa fa-check-circle-o"
+                        aria-hidden="true"></i>
                 </td>
                 <td>
                     많은 신청 건수로 증명한 확실한 업체!
                 </td>
             </tr>
 
-            <tr class="lg:text-2xl testaos" data-aos="flip-up" data-aos-duration="1000">
-                <td class="px-4 py-3 lg:py-6" style="min-width: 50px;"><i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            <tr class="lg:text-2xl go_count" data-aos="flip-up" data-aos-duration="1000">
+                <td class="px-4 py-3 lg:py-6" style="min-width: 50px;"><i class="fa fa-check-circle-o"
+                        aria-hidden="true"></i>
                 </td>
                 <td>
-                    누적 신청건수 <span class="text-red-500">247건!</span> <br>
-                    누적 사은품 지급 금액 <span class="text-red-500">98,800,000원!</span> 
+                    누적 신청건수 <span class="text-red-500 font-bold req_count">-</span> <span
+                        class="text-red-500 font-bold">건!</span> <br>
+                    누적 사은품 지급 금액 <span class="text-red-500 font-bold gift_price">-</span
+                        class="text-red-500 font-bold">원!<span></span>
                 </td>
             </tr>
-            <tr class=" lg:text-2xl" data-aos="flip-up" data-aos-duration="1000">
-                <td class="px-4 py-3 lg:py-6" style="max-width: 30px;"><i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            <tr class="hidden lg:text-2xl" data-aos="flip-up" data-aos-duration="1000">
+                <td class="px-4 py-3 lg:py-6" style="max-width: 30px;"><i class="fa fa-check-circle-o"
+                        aria-hidden="true"></i>
                 </td>
                 <td>
                     후기 작성시 5만원 상당 사은품 증정! 비교불가 혜택!!
@@ -107,19 +112,41 @@
 
 
 
-<script src="/db_lib/lib/front_lib.js"></script>
+<script src="/lib/front_lib.js"></script>
 
 <script>
 
-window.onload = () => {
-    // 카운트를 적용시킬 요소
-    const $counter = document.querySelector(".count");
-    
-    // 목표 수치
-    const max = 17249;
-    
-    setTimeout(() => counter($counter, max, 30), 1000);
-  }
+    AOS.init();
+
+
+    const go_count = document.querySelector('.go_count');
+    const req_count = document.querySelector('.req_count');
+    const gift_price = document.querySelector('.gift_price');
+    go_count.addEventListener('transitionend', (e) => {
+        if (req_count.innerHTML == "-") {
+            const max = 247;
+            counter(req_count, max, 30);
+        }else{
+            req_count.innerHTML = "-"
+        }
+
+        if (gift_price.innerHTML == "-") {
+            const max = 98800000;
+            counter(gift_price, max, 30);
+        }else{
+            gift_price.innerHTML = "-"
+        }
+    });
+
+    // window.onload = () => {
+    //     // 카운트를 적용시킬 요소
+    //     const $counter = document.querySelector(".count");
+
+    //     // 목표 수치
+    //     const max = 17249;
+
+    //     setTimeout(() => counter($counter, max, 30), 1000);
+    //   }
     var typingBool = false;
     var typingIdx = 0;
 
@@ -148,13 +175,7 @@ window.onload = () => {
     }
 
 
-    AOS.init();
 
-
-    const testaos = document.querySelector('.testaos');
-    testaos.addEventListener('transitionend', () => {
-        console.log('animated in');
-    });
 
 
 </script>
