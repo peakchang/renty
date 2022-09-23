@@ -47,6 +47,7 @@ router.post('/' , async (req,res) => {
     let getData = req.body
 
     console.log('아니 씨발탱 안되는거야 뭐야??????????????????');
+    console.log(getData);
     const setData = getData[0];
     console.log(setData);
 
@@ -59,8 +60,8 @@ router.post('/' , async (req,res) => {
     console.log(get_phone);
 
 
-    // let get_form_name = setData.form_name;
-    // let get_full_name = setData.full_name;
+    let get_form_name = setData.form_name;
+    let get_full_name = setData.full_name;
     // let temp_phone = setData.phone_number;
     // if(temp_phone.includes('+820')){
     //     var get_phone = temp_phone.replace('+820', '0')
@@ -69,8 +70,8 @@ router.post('/' , async (req,res) => {
     // }
 
     // console.log(get_phone);
-    // console.log(get_form_name);
-    // console.log(get_full_name);
+    console.log(get_form_name);
+    console.log(get_full_name);
     // console.log(get_phone);
 
     // if(get_form_name.includes('인터넷')){
