@@ -39,16 +39,17 @@ router.post('/' , async (req,res) => {
     let getData = req.body
 
     console.log(getData);
-    const setData = getData[0];
-    console.log(setData);
-    let get_form_name = setData.form_name;
-    let get_full_name = setData.full_name;
-    let temp_phone_temp = setData.phone_number;
-    let temp_phone = temp_phone_temp.replace('+820', '0')
-    let get_phone = temp_phone.replace('+82', '0')
-    console.log(get_form_name);
-    console.log(get_full_name);
-    console.log(get_phone);
+    console.log('아니 씨발탱 안되는거야 뭐야??????????????????');
+    // const setData = getData[0];
+    // console.log(setData);
+    // let get_form_name = setData.form_name;
+    // let get_full_name = setData.full_name;
+    // let temp_phone_temp = setData.phone_number;
+    // let temp_phone = temp_phone_temp.replace('+820', '0')
+    // let get_phone = temp_phone.replace('+82', '0')
+    // console.log(get_form_name);
+    // console.log(get_full_name);
+    // console.log(get_phone);
 
     // let getArr = [get_form_name,get_full_name,get_phone,nowDateTime];
     // let formInertSql = `INSERT INTO application_form (form_name,mb_name,mb_phone,created_at) VALUES (?,?,?,?);`;
