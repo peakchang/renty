@@ -37,13 +37,15 @@ router.get('/', async (req, res) => {
 router.post('/' , async (req,res) => {
     var nowDateTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     let getData = req.body
-    console.log('Zap request body:', getData);
-    setData = getData[0];
+    const setData = getData[0];
+    console.log(setData);
     let get_form_name = setData.form_name;
     let get_full_name = setData.full_name;
     let temp_phone_temp = setData.phone_number;
     let temp_phone = temp_phone_temp.replace('+820', '0')
     let get_phone = temp_phone.replace('+82', '0')
+    console.log(get_form_name);
+    console.log(get_full_name);
     console.log(get_phone);
 
     let getArr = [get_form_name,get_full_name,get_phone,nowDateTime];
