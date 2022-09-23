@@ -42,9 +42,14 @@ router.post('/' , async (req,res) => {
     const setData = getData[0];
     let get_form_name = setData.form_name;
     let get_full_name = setData.full_name;
-    let temp_phone_temp = setData.phone_number;
-    let temp_phone = temp_phone_temp.replace('+820', '0')
-    let get_phone = temp_phone.replace('+82', '0')
+    let temp_phone = setData.phone_number;
+    if(temp_phone.includes('+820')){
+        var get_phone = temp_phone.replace('+820', '0')
+    }else{
+        var get_phone = temp_phone.replace('+82', '0')
+    }
+
+    console.log(get_phone);
     console.log(get_form_name);
     console.log(get_full_name);
     console.log(get_phone);
