@@ -4,7 +4,7 @@ const { executeQuery } = require('../db_lib/dbset.js');
 const axios = require('axios');
 const router = express.Router();
 const mysql_conn = require('../db_lib');
-
+const { sendSms }  = require('../db_lib/back_lib');
 
 
 var token = process.env.TOKEN || 'token';
@@ -37,11 +37,9 @@ router.get('/', async (req, res) => {
 router.post('/' , async (req,res) => {
     var nowDateTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     let getData = req.body
-
-    console.log(getData);
+    
     console.log('아니 씨발탱 안되는거야 뭐야??????????????????');
     const setData = getData[0];
-    console.log(setData);
     let get_form_name = setData.form_name;
     let get_full_name = setData.full_name;
     let temp_phone_temp = setData.phone_number;
@@ -51,8 +49,19 @@ router.post('/' , async (req,res) => {
     console.log(get_full_name);
     console.log(get_phone);
 
-    // let getArr = [get_form_name,get_full_name,get_phone,nowDateTime];
-    // let formInertSql = `INSERT INTO application_form (form_name,mb_name,mb_phone,created_at) VALUES (?,?,?,?);`;
+    if(get_form_name.includes('인터넷')){
+        var form_type_in = '인터넷'
+        sendSms(get_phone, '테스트 메세지 입니다.')
+    }else if(get_form_name.includes('분양')){
+        var form_type_in = '분양'
+    }else{
+        var form_type_in = '미정'
+    }
+
+    let getArr = [get_form_name, form_type_in, get_full_name, get_phone, nowDateTime];
+    let formInertSql = `INSERT INTO application_form (form_name, form_type_in, mb_name, mb_phone, created_at) VALUES (?,?,?,?);`;
+
+    console.log(formInertSql);
 
     // await mysql_conn.promise().query(formInertSql, getArr)
 
