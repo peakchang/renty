@@ -49,19 +49,19 @@ router.post('/' , async (req,res) => {
     console.log(get_full_name);
     console.log(get_phone);
 
-    if(get_form_name.includes('인터넷')){
-        var form_type_in = '인터넷'
-        await sendSms(get_phone, '테스트 메세지 입니다.')
-    }else if(get_form_name.includes('분양')){
-        var form_type_in = '분양'
-    }else{
-        var form_type_in = '미정'
-    }
+    // if(get_form_name.includes('인터넷')){
+    //     var form_type_in = '인터넷'
+    //     await sendSms(get_phone, '테스트 메세지 입니다.')
+    // }else if(get_form_name.includes('분양')){
+    //     var form_type_in = '분양'
+    // }else{
+    //     var form_type_in = '미정'
+    // }
 
-    let getArr = [get_form_name, form_type_in, get_full_name, get_phone, nowDateTime];
-    let formInertSql = `INSERT INTO application_form (form_name, form_type_in, mb_name, mb_phone, created_at) VALUES (?,?,?,?);`;
+    // let getArr = [get_form_name, form_type_in, get_full_name, get_phone, nowDateTime];
+    // let formInertSql = `INSERT INTO application_form (form_name, form_type_in, mb_name, mb_phone, created_at) VALUES (?,?,?,?);`;
 
-    console.log(formInertSql);
+    // console.log(formInertSql);
 
     // await mysql_conn.promise().query(formInertSql, getArr)
 
