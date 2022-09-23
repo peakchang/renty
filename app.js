@@ -59,10 +59,6 @@ nunjucks.configure('views', {
   watch: true,
 });
 
-const env = new nunjucks.Environment();
-env.addFilter('date', dateFilter);
-
-
 
 
 if (process.env.NODE_ENV === 'production') {
