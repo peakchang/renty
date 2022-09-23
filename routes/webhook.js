@@ -51,44 +51,28 @@ router.post('/' , async (req,res) => {
     const setData = getData[0];
     console.log(setData);
 
-    let temp_phone = "+82010-2190-2197"
+    let get_form_name = setData.form_name;
+    let get_full_name = setData.full_name;
+    let temp_phone = setData.phone_number;
     if(temp_phone.includes('+820')){
         var get_phone = temp_phone.replace('+820', '0')
     }else{
         var get_phone = temp_phone.replace('+82', '0')
     }
-    console.log(get_phone);
 
+    if(get_form_name.includes('인터넷')){
+        var form_type_in = '인터넷'
+        await sendSms(get_phone, '테스트 메세지 입니다.')
+    }else if(get_form_name.includes('분양')){
+        var form_type_in = '분양'
+    }else{
+        var form_type_in = '미정'
+    }
 
-    let get_form_name = setData.form_name;
-    let get_full_name = setData.full_name;
-    // let temp_phone = setData.phone_number;
-    // if(temp_phone.includes('+820')){
-    //     var get_phone = temp_phone.replace('+820', '0')
-    // }else{
-    //     var get_phone = temp_phone.replace('+82', '0')
-    // }
+    let getArr = [get_form_name, form_type_in, get_full_name, get_phone, nowDateTime];
+    let formInertSql = `INSERT INTO application_form (form_name, form_type_in, mb_name, mb_phone, created_at) VALUES (?,?,?,?);`;
 
-    // console.log(get_phone);
-    console.log(get_form_name);
-    console.log(get_full_name);
-    // console.log(get_phone);
-
-    // if(get_form_name.includes('인터넷')){
-    //     var form_type_in = '인터넷'
-    //     await sendSms(get_phone, '테스트 메세지 입니다.')
-    // }else if(get_form_name.includes('분양')){
-    //     var form_type_in = '분양'
-    // }else{
-    //     var form_type_in = '미정'
-    // }
-
-    // let getArr = [get_form_name, form_type_in, get_full_name, get_phone, nowDateTime];
-    // let formInertSql = `INSERT INTO application_form (form_name, form_type_in, mb_name, mb_phone, created_at) VALUES (?,?,?,?);`;
-
-    // console.log(formInertSql);
-
-    // await mysql_conn.promise().query(formInertSql, getArr)
+    await mysql_conn.promise().query(formInertSql, getArr)
 
     console.log('success!!!!!');
     res.send('zapzaapapapapapapap')
