@@ -24,6 +24,7 @@ router.get('/', async (req, res) => {
         var get_phone = temp_phone.replace('+82', '0')
     }
     console.log(get_phone);
+    await sendSms(get_phone, '테스트 메세지 입니다.')
 
     // let testSql = `SELECT * FROM application_form`;
     // let getTestVal = await mysql_conn.promise().query(testSql)

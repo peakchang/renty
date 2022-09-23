@@ -1,4 +1,5 @@
 
+const axios = require('axios');
 
 /** 알리고 문자 발송  **/
 exports.sendSms = (receivers, message) => {
@@ -7,7 +8,8 @@ exports.sendSms = (receivers, message) => {
             key: process.env.ALIGOKEY,
             user_id: process.env.ALIGOID,
             sender: process.env.SENDER,
-            receiver: receivers.join(','),
+            // receiver: receivers.join(','),
+            receiver: receivers,
             msg: message,
             // 테스트모드
             testmode_yn: 'Y'
