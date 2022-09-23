@@ -17,9 +17,17 @@ moment.tz.setDefault("Asia/Seoul");
 
 router.get('/', async (req, res) => {
 
-    let testSql = `SELECT * FROM application_form`;
-    let getTestVal = await mysql_conn.promise().query(testSql)
-    console.log(getTestVal);
+    let temp_phone = "+82010-2190-2197"
+    if(temp_phone.includes('+820')){
+        var get_phone = temp_phone.replace('+820', '0')
+    }else{
+        var get_phone = temp_phone.replace('+82', '0')
+    }
+    console.log(get_phone);
+
+    // let testSql = `SELECT * FROM application_form`;
+    // let getTestVal = await mysql_conn.promise().query(testSql)
+    // console.log(getTestVal);
 
     if (
         req.query['hub.mode'] == 'subscribe' &&
@@ -40,19 +48,30 @@ router.post('/' , async (req,res) => {
 
     console.log('아니 씨발탱 안되는거야 뭐야??????????????????');
     const setData = getData[0];
-    let get_form_name = setData.form_name;
-    let get_full_name = setData.full_name;
-    let temp_phone = setData.phone_number;
+    console.log(setData);
+
+    let temp_phone = "+82010-2190-2197"
     if(temp_phone.includes('+820')){
         var get_phone = temp_phone.replace('+820', '0')
     }else{
         var get_phone = temp_phone.replace('+82', '0')
     }
+    console.log(get_phone);
 
-    console.log(get_phone);
-    console.log(get_form_name);
-    console.log(get_full_name);
-    console.log(get_phone);
+
+    // let get_form_name = setData.form_name;
+    // let get_full_name = setData.full_name;
+    // let temp_phone = setData.phone_number;
+    // if(temp_phone.includes('+820')){
+    //     var get_phone = temp_phone.replace('+820', '0')
+    // }else{
+    //     var get_phone = temp_phone.replace('+82', '0')
+    // }
+
+    // console.log(get_phone);
+    // console.log(get_form_name);
+    // console.log(get_full_name);
+    // console.log(get_phone);
 
     // if(get_form_name.includes('인터넷')){
     //     var form_type_in = '인터넷'
