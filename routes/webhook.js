@@ -17,7 +17,7 @@ moment.tz.setDefault("Asia/Seoul");
 
 router.get('/', async (req, res) => {
 
-    let temp_phone = "+82010-2190-2197"
+    let temp_phone = "+821021902197"
     if(temp_phone.includes('+820')){
         var get_phone = temp_phone.replace('+820', '0')
     }else{
@@ -63,11 +63,12 @@ router.post('/' , async (req,res) => {
 
     if(get_form_name.includes('인터넷')){
         var form_type_in = '인터넷'
-        await sendSms(get_phone, '테스트 메세지 입니다.')
+        await sendSms(get_phone, '테스트 메세지 POST로 발송 합니다!!! 입니다.')
     }else if(get_form_name.includes('분양')){
         var form_type_in = '분양'
     }else{
         var form_type_in = '미정'
+        await sendSms(get_phone, '테스트 메세지 POST로 발송 합니다!!! 입니다.')
     }
 
     let getArr = [get_form_name, form_type_in, get_full_name, get_phone, nowDateTime];
