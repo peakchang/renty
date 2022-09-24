@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
         console.log('3rd chk here!!! - is real false??');
         res.send('웹 훅 인증 대기 페이지 입니다!!!')
     }
-    res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
+    // res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
 });
 
 
