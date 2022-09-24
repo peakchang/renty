@@ -10,6 +10,59 @@ require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
 
 
+router.get('/test', (req, res, next) => {
+    var testStr = "ijijij0123";
+    // var testReg = /[ija]/;
+    // var getTest = testReg.test(testStr)
+    // console.log(getTest);
+
+    // var getMatch = testStr.match(/i/ig);
+    // console.log(getMatch);
+
+    // const targetStr = 'This is a pen.';
+    // const reg = /is/ig;
+    // console.log(reg.exec(targetStr)); // 정보를 모두 출력
+    // console.log(reg.test(targetStr)); // 있는지 확인 bool 형태 반환
+
+    // console.log(targetStr.match(reg)); // 내용을 배열로 반환
+    // console.log(targetStr.replace(reg, 'ON')); // 내용을 뒤에 나오는 문자열로 변환
+
+    // console.log(targetStr.search(reg)); // 있는지 확인 int 형태로 반환 (포함 갯수)
+    // console.log(targetStr.split(reg)); // 자른다~
+
+
+    const chkStr1 = `대나무 빨대 a급 제품은 10개 남아있습니다. 010-1111-2222 로 Call Me~!`
+
+    // const chkStr1 = 'This is a pen.';
+    // console.log(/c/i.test(chkStr1));
+    // console.log(chkStr1.search(/a/));
+    // console.log(chkStr1.search(/빨대/ig)); // 있는지 확인 int 형태로 반환 (포함 갯수)
+    // console.log(chkStr1.replace(/대나무/,'소나무'));
+    // console.log(chkStr1.replace(/[대빨2]/g, '공'));
+    // console.log(chkStr1.replace(/[0-9]/g, '수'));
+    // console.log(chkStr1.match(/[0-9]/g));
+    // console.log(chkStr1.replace(//ig,'k'));
+    
+    // const text = `대나무 빨대 구입 문의 : http://dogumaster.com https://google.com 010-1111-2222 02-333-7777 curryyou@aaa.com`;
+
+    // let setVal = text.match(/https?:\/\/[\w\-\.]+/g);
+    // let setVal = text.match(/http/g);
+    // let setVal = text.match(/http?s?/g);
+    // let setVal = text.match(/http?s?\:\/\/[\w\-\.]+/g);
+    // let setVal = text.match(/[\w\-]+/g);
+    // let setVal = text.match(/\d{2,3}\-\d{3,4}\-\d{3,4}/g);
+
+    // let setVal = text.match(/[\s]*빨대/ig)
+    const text = `abcde ascde`;
+    let setVal = text.match(/[\w]*/g);
+    console.log(setVal);
+
+
+    
+    
+    res.send('ladjfliajsdfiajsldifj')
+})
+
 
 
 router.get('/', (req, res, next) => {

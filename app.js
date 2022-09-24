@@ -24,7 +24,7 @@ const crmRouter = require('./routes/crm');
 const authRouter = require('./routes/auth');
 const mainRouter = require('./routes/main');
 const webhookRouter = require('./routes/webhook');
-
+const whRouter = require('./routes/wh');
 
 
 // 레디스 안쓸거면 주석
@@ -105,6 +105,8 @@ app.use('/', mainRouter);
 app.use('/auth', authRouter);
 app.use('/crm', crmRouter);
 app.use('/webhook', webhookRouter);
+app.use('/wh', whRouter);
+
 
 // 라우터 없을시 에러 발생
 app.use((req, res, next) => {

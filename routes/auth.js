@@ -3,7 +3,7 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { executeQuery } = require('../db_lib/dbset.js');
-
+const sql_con = require('../db_lib/');
 const moment = require('moment');
 require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
@@ -42,10 +42,10 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
         }
 
         const hash = await bcrypt.hash(password, 12);
-        let mysqlTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-        let makeUserQuery = `INSERT INTO users (userid, nick, password, createdAt, updatedAt) VALUES(?, ?, ?, ?, ?);`;
-        let valArr = [userid_inp, nick, hash, mysqlTimestamp, mysqlTimestamp]
-        await executeQuery(makeUserQuery, valArr);
+        let nowTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+        let makeUserQuery = `INSERT INTO users (userid, nick, password, created_at) VALUES(?, ?, ?, ?);`;
+        let valArr = [userid_inp, nick, hash, nowTime]
+        await sql_con.promise().query(makeUserQuery, valArr)
 
         return res.redirect('/auth/login');
     } catch (error) {
