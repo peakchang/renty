@@ -3,7 +3,7 @@ const fs = require('fs');
 const { executeQuery } = require('../db_lib/dbset.js');
 const axios = require('axios');
 const router = express.Router();
-const mysql_conn = require('../db_lib');
+const sql_con = require('../db_lib');
 const { sendSms } = require('../db_lib/back_lib');
 
 
