@@ -93,14 +93,9 @@ exports.tableSetting = async () => {
     let setSql = `ALTER TABLE reviews MODIFY rv_created_at DEFAULT ON UPDATE CURRENT_TIMESTAMP;`
     sql_con.query(setSql, (err, result) => { });
 
-    // ALTER TABLE reviews ADD CONSTRAINT rv_created_at DEFAULT ON UPDATE CURRENT_TIMESTAMP;;
-
-
-
+    // ALTER TABLE reviews ADD CONRAINT rv_created_at DEFAULT ON UPDATE CURRENT_TIMESTAMP;;ST
+    // ALTER TABLE reviews MODIFY COLUMN rv_created_at DATETIME DEFAULT NOW();
     
-
-
-
     // let changeArr = ['item_other', 'form_memo_1', 'form_memo_2', 'form_memo_3', 'form_memo_4', 'form_memo_5', 'form_memo_6', 'form_memo_7', 'form_memo_8', 'form_memo_9', 'form_memo_10', 'mb_address']
 
     // changeArr.forEach(element => {

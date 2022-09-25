@@ -25,6 +25,10 @@
     <img src="/img/renty_base/review_top.png" alt="" class="w-full">
 </div>
 
+<div class="max-w-2xl px-3 mx-auto text-right ">
+    <button class="bg-blue-500 text-white rounded px-5 py-1 font-semibold text-sm review_modal_btn">구매 후기 작성</button>
+</div>
+
 <!-- {{ allReviews }} -->
 <ul class="divide-y px-3">
 
@@ -41,40 +45,224 @@
                 <span class="inliin-block ml-2">{{ review.rv_name }}</span>
                 <span class="ml-1">|</span>
                 <span class="inliin-block ml-1">{{ review.rv_created_at }}</span>
-            </div >
+            </div>
             <div class="break-all overText overflow-hidden pr-8 text-sm">
-            {{ review.rv_content }}
+                {{ review.rv_content }}
             </div>
         </div>
     </li>
     {% endfor %}
-
-
-
-    <!-- <li class="h-20 max-w-3xl mx-auto py-1">
-        <div class="h-full float-left overflow-hidden chkimgcss mr-4 rounded-xl">
-            <img src="/img/sample/review/2-1.JPG" alt="" class="w-full">
-        </div>
-        <div class="h-full flex flex-col justify-center">
-            <div class="flex items-center text-sm text-gray-500">
-                <span class="inliin-block">
-                    <img class="w-5 h-5 rounded-full" src="/img/sample/review/profile_base.jpg" alt="">
-                </span>
-                <span class="inliin-block ml-2">박*용</span>
-                <span class="ml-1">|</span>
-                <span class="inliin-block ml-1">2197</span>
-                <span class="ml-1">|</span>
-                <span class="inliin-block ml-1">22.09.21</span>
-            </div>
-            <div class="break-all overText overflow-hidden pr-8 text-sm">
-                우여곡절 끝에 신청 했습니다 ㅎㅎ 이러쿵 저러쿵 이구요~~ 이렇게 되고 저렇게 된 부분들이 너무 좋았던것 같아요 앞으로도 자주 이용하도록 하겠습니다 ^^
-            </div>
-        </div>
-    </li> -->
-
 </ul>
 
+<div style="height: 100%; width: 100%; background-color: rgba(93, 90, 90, 0.8); z-index: 51; position: fixed; left: 0px; top: 0px;"
+    class="flex justify-center items-center cursor-pointer review_modal px-2">
 
+
+    <div class="relative bg-white rounded p-3 text-center overflow-auto w-full md:w-2/3 lg:w-2/4 review_modal_content"
+        style="max-height: 95vh; z-index: 52;">
+        <span class="absolute top-1 right-3 text-4xl text-red-600 close_modal">
+            <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+        </span>
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="mb_phone" class="mb_phone">
+            <div class="inner_content_auth divide-y-2">
+                <div class="py-3">
+                    가입하신 정보를 입력해주세요!
+                </div>
+
+                <div class="grid grid-cols-8 py-2">
+                    <div class="col-span-2 text-center flex items-center justify-center text-sm">가입자명</div>
+                    <div class="col-span-6">
+                        <input type="text" name="mb_name" id="default-input" placeholder="이름을 입력해주세요"
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-8 py-2">
+                    <div class="col-span-2 text-center flex items-center justify-center text-sm">휴대전화</div>
+                    <div class="col-span-6 flex">
+                        <input type="text" name="mb_phone1" id="default-input" value="010"
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full mb_phone1">
+
+                        <span class="px-1 mt-1">-</span>
+
+                        <input type="text" name="mb_phone2" id="default-input"
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full mb_phone2">
+                        <span class="px-1 mt-1">-</span>
+                        <input type="text" name="mb_phone3" id="default-input"
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full mb_phone3">
+                    </div>
+                </div>
+                <div class="py-3 ">
+                    <button class="bg-blue-500 text-white rounded px-8 py-2 font-semibold goto_write">
+                        확인하기
+                    </button>
+                </div>
+            </div>
+
+            <div class="hidden inner_content_write divide-y-2">
+                <div class="py-3">
+                    후기를 작성해주세요!
+                </div>
+                <div class="py-3">
+
+
+                    <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200">
+                        <div class="py-2 px-4 bg-white rounded-t-lg ">
+                            <label for="comment" class="sr-only">Your comment</label>
+                            <textarea id="comment" rows="4" name="review_content"
+                                class="px-0 w-full text-sm text-gray-900 bg-white border-0 focus:ring-0"
+                                placeholder="후기를 작성해주세요. 이미지를 첨부하셔면 우측 하단 버튼을 클릭해주세요." required></textarea>
+                        </div>
+                        <div class="flex justify-between items-center py-2 px-3 border-t ">
+                            <button type="submit"
+                                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-green-700">
+                                작성 완료하기
+                            </button>
+                            <div class="flex pl-0 space-x-1 sm:pl-2">
+                                <button type="button"
+                                    class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 addimage">
+                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="sr-only">Upload image</span>
+                                </button>
+                            </div>
+                        </div>
+                        <input id="addimage" type="file" accept="image/*" class="hidden">
+                        <input id="image_list" type="hidden" name="image_list">
+                    </div>
+
+
+                    <div class="hidden border border-blue-300 rounded-lg overflow-auto p-2 image_wrap_on">
+                        <div class="flex image_wrap" style="width:100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<script>
+
+    if (document.getElementById('addimage')) {
+        document.getElementById('addimage').addEventListener('change', function (e) {
+
+            console.log(this);
+            const formData = new FormData();
+            console.log(this, this.files);
+            formData.append('img', this.files[0]);
+            console.log(formData);
+            axios.post('/review/img', formData)
+                .then((res) => {
+
+                    // 이미지 URL 담기는 INPUT에 추가
+                    let preImageList = document.querySelector('#image_list').value;
+                    console.log(preImageList);
+                    if (preImageList != '') {
+                        var addImageList = preImageList + "," + res.data.url;
+                    } else {
+                        var addImageList = res.data.url;
+                    }
+                    document.querySelector('#image_list').value = addImageList
+
+                    // 하단 이미지 리스트에 내용 넣기
+
+                    var chkEle = document.querySelector('.imageele');
+                    if (chkEle == null) {
+                        $('.image_wrap_on').show()
+                    }
+                    const uploadImageEle = `<div class="w-20 h-20 border rounded overflow-hidden mr-2 flex justify-center items-center relative imageele"><span class="absolute top-0 right-0 pr-1 text-xl text-red-600 delete_image"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span><img src="${res.data.url}" alt="" class="w-full"></div>`;
+                    $('.image_wrap').append(uploadImageEle);
+
+
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        });
+    }
+
+    $(document).on('click', '.delete_image', function (e) {
+
+        // 삭제할 URL 구하기 ()
+        var delTargetUrl = this.nextElementSibling.src
+        var delTargetUrlArr = delTargetUrl.split('/');
+        delTargetUrlArr.shift();
+        delTargetUrlArr.shift();
+        delTargetUrlArr.shift();
+        var delTargetUrl = delTargetUrlArr.join('/');
+        var delTargetUrl = "/" + delTargetUrl
+
+
+        // 기존 imge VALUE 에서 삭제된 URL 삭제
+        var preImageList = document.querySelector('#image_list').value;
+        var preImageList = preImageList.replace(delTargetUrl, '')
+        var chkComma = preImageList[preImageList.length - 1]
+        if (chkComma == ',') {
+            var preImageList = preImageList.substring(0, preImageList.length - 1);
+        }
+
+        var chkComma = preImageList.charAt(0);
+        if (chkComma == ',') {
+            var preImageList = preImageList.substring(1);
+        }
+        const doubleCommaReg = /\,\,/g;
+        var preImageList = preImageList.replace(doubleCommaReg, ',');
+        console.log(preImageList);
+        document.querySelector('#image_list').value = preImageList
+
+        this.parentNode.remove()
+
+        var chkEle = document.querySelector('.imageele');
+        if (chkEle == null) {
+            $('.image_wrap_on').hide()
+        }
+
+        console.log(delTargetUrl);
+
+        axios.post('/review/delimg',{imgname:delTargetUrl})
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    })
+
+
+    $('.review_modal').hide()
+    $('.review_modal_btn').click((e) => {
+        $('.review_modal').show()
+    })
+
+    $('.close_modal').click(function (e) {
+        $('.review_modal').hide()
+    })
+
+    $('.goto_write').click(function (e) {
+        $('.inner_content_auth').hide()
+        $('.inner_content_write').show()
+
+        const mb_phone1 = document.querySelector('.mb_phone1').value;
+        const mb_phone2 = document.querySelector('.mb_phone2').value;
+        const mb_phone3 = document.querySelector('.mb_phone3').value;
+        const mb_phone = `${mb_phone1}-${mb_phone2}-${mb_phone3}`;
+        console.log(mb_phone);
+        document.querySelector('.mb_phone').value = mb_phone
+
+    })
+
+    $('.addimage').click(function (e) {
+        $('#addimage').trigger('click');
+    })
+</script>
 
 
 {% endblock %}

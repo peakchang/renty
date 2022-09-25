@@ -20,13 +20,13 @@ exports.sendSms = (receivers, message) => {
 }
 
 /** length 만큼 랜덤 문자열 만들어줌 **/
-exports.randomChracter = async (length) => {
+exports.randomChracter = (length) => {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let i = 0;
     while (i < length){
         i++;
-        text = await text + possible.charAt(Math.floor(Math.random() * possible.length));
+        text = text + possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
 }
