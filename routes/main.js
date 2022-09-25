@@ -62,10 +62,9 @@ router.post('/review', upload2.none(), async (req, res, next) => {
     // 내용 P태그로 바꾸기
     var reviewContent = req.body.review_content;
     if(reviewContent.includes('\r\n')){
-        var reviewContent = reviewContent.replaceAll('\r\n', '</p><p>')
+        var reviewContent = reviewContent.replace(/\/r\/n/g, '</p><p>')
     }
     var reviewContent = `<p>${reviewContent}</p>`;
-
     // 이미지링크 태그 입히기
     var reviewImage = '';
     var reviewImageList = req.body.image_list.split(',');
