@@ -99,10 +99,9 @@
         style="z-index: 60;">
         <div class="relative p-4 w-full max-w-2xl h-auto">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow">
+            <div class="relative bg-white rounded-lg shadow overflow-auto" style="max-height: 90vh; z-index: 52;">
                 <!-- Modal header -->
-                <div
-                    class="flex justify-between items-start p-4 rounded-t border-b background_modal">
+                <div class="flex justify-between items-start p-4 rounded-t border-b background_modal">
                     <h3 class="text-xl font-semibold text-gray-900">
                         <span class="head_text">가입자 정보를 입력해주세요!</span>
                     </h3>
@@ -119,7 +118,7 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <div class="p-6 pt-0 space-y-6">
+                <div class="p-6 pt-0">
 
                     <!-- 기본정보 폼 -->
                     <div class="container mx-auto max-w-4xl py-4 divide-y base_info">
@@ -128,8 +127,8 @@
                         <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center flex items-center justify-center text-sm">가입자명</div>
                             <div class="col-span-6">
-                                <input type="text" name="mb_name" id="default-input" placeholder="문의 사항을 입력해주세요"
-                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                                <input type="text" name="mb_name" id="default-input" placeholder="이름을 입력해주세요"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full" required>
                             </div>
                         </div>
 
@@ -144,23 +143,22 @@
                                 <span class="px-1 mt-1">-</span>
 
                                 <input type="text" name="mb_phone2" id="default-input"
-                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full" required>
                                 <span class="px-1 mt-1">-</span>
                                 <input type="text" name="mb_phone3" id="default-input"
-                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full" required>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center ">
-                                <span class="flex items-center justify-center inline-block text-sm">사용중</span>
-                                <span class="flex items-center justify-center inline-block text-sm">통신사</span>
+                                <span class="flex items-center justify-center text-sm">사용중</span>
+                                <span class="flex items-center justify-center text-sm">통신사</span>
                             </div>
                             <div class="col-span-6">
                                 <ul
                                     class="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 sm:flex ">
-                                    <li
-                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r ">
+                                    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r ">
                                         <div class="flex items-center pl-3">
                                             <input id="horizontal-list-radio-license" type="radio" value=""
                                                 name="mb_phone_cpn"
@@ -170,8 +168,7 @@
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900 ">SK</label>
                                         </div>
                                     </li>
-                                    <li
-                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r ">
+                                    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r ">
                                         <div class="flex items-center pl-3">
                                             <input id="horizontal-list-radio-id" type="radio" value=""
                                                 name="mb_phone_cpn"
@@ -180,8 +177,7 @@
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900 ">KT</label>
                                         </div>
                                     </li>
-                                    <li
-                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
+                                    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
                                         <div class="flex items-center pl-3">
                                             <input id="horizontal-list-radio-millitary" type="radio" value=""
                                                 name="mb_phone_cpn"
@@ -207,25 +203,25 @@
                             <div class="col-span-2 text-center flex items-center justify-center text-sm">주민등록번호</div>
                             <div class="col-span-6 flex">
                                 <input type="text" name="mb_regnum1" id="default-input"
-                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full" required>
 
                                 <span class="px-1 mt-1">-</span>
 
                                 <input type="text" name="mb_regnum2" id="default-input"
-                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full">
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full" required>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center flex items-center justify-center">이메일</div>
                             <div class="col-span-6 flex">
-                                <input type="text" name="mb_email1" id="default-input" value="010"
-                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full">
+                                <input type="text" name="mb_email1" id="default-input" value=""
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 w-full" required>
 
                                 <span class="px-1 mt-1">@</span>
 
                                 <input type="text" name="mb_email2" id="default-input"
-                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full mail_change_target">
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 w-full mail_change_target" required>
                                 <span>&nbsp;</span>
                                 <select
                                     class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select_mailcompany select-arrow"
@@ -271,20 +267,21 @@
                             </div>
                         </div>
 
-                        <div class="text-center">
+                        <!-- <div class="text-center">
                             <button type="button"
                                 class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 my-2 rounded-full w-1/2 goto_account_info">
                                 납부정보 입력하기
                             </button>
-                        </div>
+                        </div> -->
                     </div>
 
-                    <div class="hidden container mx-auto max-w-4xl py-4 divide-y account_info">
-                        <div class="flex items-center mb-4 justify-end same_base">
+                    <div class="container mx-auto max-w-4xl py-4 divide-y account_info mt-0">
+                        <div class="mb-2 text-xl font-semibold text-gray-900">납부정보를 입력해주세요!</div>
+                        <div class="flex items-center py-1 justify-end same_base">
                             <input id="default-checkbox" type="checkbox" value=""
                                 class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2 ">
-                            <label for="default-checkbox"
-                                class="ml-2 text-sm font-medium text-gray-900 ">가입자 정보와 같음</label>
+                            <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 ">가입자 정보와
+                                같음</label>
                         </div>
                         <div class="grid grid-cols-8 py-2">
                             <div class="col-span-2 text-center ">
@@ -293,8 +290,7 @@
                             <div class="col-span-6">
                                 <ul
                                     class="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 sm:flex ">
-                                    <li
-                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
+                                    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
                                         <div class="flex items-center pl-3">
                                             <input id="payment_bank" type="radio" value="bank" name="mb_pay_type"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2"
@@ -303,8 +299,7 @@
                                                 class="py-1 ml-2 w-full text-sm font-medium text-gray-900">계좌이체</label>
                                         </div>
                                     </li>
-                                    <li
-                                        class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
+                                    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
                                         <div class="flex items-center pl-3">
                                             <input id="payment_card" type="radio" value="card" name="mb_pay_type"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2">
@@ -319,9 +314,6 @@
 
 
                         <div class="divide-y onbank">
-
-
-
                             <div class="grid grid-cols-8 py-2">
                                 <div class="col-span-2 text-center flex items-center justify-center">은행명</div>
                                 <div class="col-span-6 flex">
@@ -486,7 +478,7 @@
                         </div>
 
 
-                        <div class="text-center flex justify-between">
+                        <!-- <div class="text-center flex justify-between">
                             <button type="button"
                                 class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 my-2 rounded-full w-1/3 text-sm backto_base_info">
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i> 기본정보로
@@ -496,18 +488,18 @@
                                 class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 my-2 rounded-full w-1/3 text-sm goto_gift_info">
                                 사은품정보 입력 <i class="fa fa-arrow-right" aria-hidden="true"></i>
                             </button>
-                        </div>
+                        </div> -->
                     </div>
 
 
 
 
-                    <div class="hidden container mx-auto max-w-4xl py-4 divide-y gift_info">
-                        <div class="flex items-center mb-4 justify-end same_account">
-                            <input id="default-checkbox" type="checkbox" value=""
+                    <div class="container mx-auto max-w-4xl py-4 divide-y gift_info">
+                        <div class="mb-2 text-xl font-semibold text-gray-900">사은품받을 정보를 입력해주세요!</div>
+                        <div class="flex items-center py-1  justify-end same_account">
+                            <input id="gift-checkbox" type="checkbox" value=""
                                 class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2 ">
-                            <label for="default-checkbox"
-                                class="ml-2 text-sm font-medium text-gray-900">계좌 정보와 같음</label>
+                            <label for="gift-checkbox" class="ml-2 text-sm font-medium text-gray-900">계좌 정보와 같음</label>
                         </div>
 
 
@@ -595,14 +587,14 @@
                         </div>
 
 
-                        <div class="text-center flex justify-between">
-                            <button type="button"
+                        <div class="text-center flex justify-center">
+                            <!-- <button type="button"
                                 class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 my-2 rounded-full text-sm w-1/3 backto_account_info">
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i> 결제정보로
-                            </button>
+                            </button> -->
 
                             <button
-                                class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 my-2 rounded-full text-sm w-1/3 goto_submit">
+                                class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 my-2 font-bold rounded-full text-xl w-1/3 goto_submit">
                                 신청완료</i>
                             </button>
                         </div>
@@ -668,11 +660,6 @@
         }, 500)
     });
 
-    // set the modal menu element
-    // const info_target = document.getElementById('infoModal');
-
-
-
     $('.info_modal_open').click(() => {
         $('.choice_item_wrap').hide()
     })
@@ -682,7 +669,6 @@
     })
 
     $('.start_bg_end').click(() => {
-        console.log('aljsdlifajslidfjafd');
         $('.start_bg').hide()
         setCookie('startMd', 'expire')
     })
@@ -695,41 +681,55 @@
         document.querySelector('.mail_change_target').value = e.target.value
     })
 
-
-    $('.goto_account_info').click(() => {
-        var testget = document.querySelector('.head_text').innerHTML = "납부 정보를 입력해주세요!"
-        $('.base_info').hide()
-        $('.account_info').show()
-    })
-
-    $('.backto_base_info').click(() => {
-        var testget = document.querySelector('.head_text').innerHTML = "가입자 정보를 입력해주세요!"
-        $('.account_info').hide()
-        $('.base_info').show()
-    })
-
-    $('.goto_gift_info').click(() => {
-        var testget = document.querySelector('.head_text').innerHTML = "사은품 수령 정보를 입력해주세요!"
-        $('.account_info').hide()
-        $('.gift_info').show()
-    })
-
-    $('.backto_account_info').click(() => {
-        var testget = document.querySelector('.head_text').innerHTML = "결제 정보를 입력해주세요!"
-        $('.gift_info').hide()
-        $('.account_info').show()
-    })
-
     $('input[name=mb_pay_type]').change((e) => {
         console.log(e.target.value);
         if (e.target.value == "bank") {
             $('.onbank').show()
             $('.oncard').hide()
-            $('.same_account,.same_base').show()
         } else {
             $('.onbank').hide()
             $('.oncard').show()
-            $('.same_account,.same_base').hide()
+        }
+    })
+
+    document.querySelector('#default-checkbox').addEventListener('change', function (e) {
+        console.log(this.checked);
+        if (this.checked == true) {
+            var mb_name = document.querySelector('input[name=mb_name]').value;
+
+            document.querySelector('input[name=mb_bank_name]').value = mb_name;
+            document.querySelector('input[name=mb_card_name]').value = mb_name;
+
+            var mb_regnum1 = document.querySelector('input[name=mb_regnum1]').value;
+            var mb_regnum2 = document.querySelector('input[name=mb_regnum2]').value;
+
+            document.querySelector('input[name=mb_bank_regnum1]').value = mb_regnum1;
+            document.querySelector('input[name=mb_bank_regnum2]').value = mb_regnum2;
+        }else{
+            document.querySelector('input[name=mb_bank_name]').value = "";
+            document.querySelector('input[name=mb_card_name]').value = "";
+            document.querySelector('input[name=mb_bank_regnum1]').value = "";
+            document.querySelector('input[name=mb_bank_regnum2]').value = "";
+        }
+    })
+
+    document.querySelector('#gift-checkbox').addEventListener('change', function (e) {
+        console.log(this.checked);
+        if (this.checked == true) {
+
+            var mb_bank_name = document.querySelector('input[name=mb_bank_name]').value;
+            document.querySelector('input[name=mb_gift_name]').value = mb_bank_name;
+
+            var mb_bank_accountnum = document.querySelector('input[name=mb_bank_accountnum]').value;
+            document.querySelector('input[name=mb_gift_accountnum]').value = mb_bank_accountnum;
+            
+            if (mb_bank_name == "") {
+                var mb_card_name = document.querySelector('input[name=mb_card_name]').value;
+                document.querySelector('input[name=mb_gift_name]').value = mb_card_name;
+            }
+        }else{
+            document.querySelector('input[name=mb_gift_name]').value = "";
+            document.querySelector('input[name=mb_gift_accountnum]').value = "";
         }
     })
 
@@ -800,6 +800,33 @@
             }
         }).open();
     }
+</script>
+
+<script>
+
+    // $('.goto_account_info').click(() => {
+    //     var testget = document.querySelector('.head_text').innerHTML = "납부 정보를 입력해주세요!"
+    //     $('.base_info').hide()
+    //     $('.account_info').show()
+    // })
+
+    // $('.backto_base_info').click(() => {
+    //     var testget = document.querySelector('.head_text').innerHTML = "가입자 정보를 입력해주세요!"
+    //     $('.account_info').hide()
+    //     $('.base_info').show()
+    // })
+
+    // $('.goto_gift_info').click(() => {
+    //     var testget = document.querySelector('.head_text').innerHTML = "사은품 수령 정보를 입력해주세요!"
+    //     $('.account_info').hide()
+    //     $('.gift_info').show()
+    // })
+
+    // $('.backto_account_info').click(() => {
+    //     var testget = document.querySelector('.head_text').innerHTML = "결제 정보를 입력해주세요!"
+    //     $('.gift_info').hide()
+    //     $('.account_info').show()
+    // })
 </script>
 
 {% endblock %}
