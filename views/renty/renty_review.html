@@ -158,13 +158,12 @@
     if (document.getElementById('addimage')) {
         document.getElementById('addimage').addEventListener('change', function (e) {
 
-            console.log(this);
             const formData = new FormData();
-            console.log(this, this.files);
             formData.append('img', this.files[0]);
-            console.log(formData);
             axios.post('/review/img', formData)
                 .then((res) => {
+
+                    console.log("반환되는 내용은!!! : "+res.data.url);
 
                     // 이미지 URL 담기는 INPUT에 추가
                     let preImageList = document.querySelector('#image_list').value;
@@ -188,6 +187,7 @@
 
                 })
                 .catch((err) => {
+                    console.log('에러입니다 에러 ㅎㅎ');
                     console.error(err);
                 });
         });
