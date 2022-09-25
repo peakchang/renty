@@ -44,10 +44,12 @@ const upload = multer({
             //파일명 설정
             const ext = path.extname(file.originalname);
             const filename = randomChracter(6);
+            console.log(filename);
+
             cb(null, filename + Date.now() + ext);
         },
     }),
-    limits: { fileSize: 5 * 1024 * 1024 },
+    // limits: { fileSize: 10 * 1024 * 1024 },
 });
 
 
