@@ -18,11 +18,15 @@ moment.tz.setDefault("Asia/Seoul");
 try {
     fs.readdirSync('uploads');
     fs.readdirSync('uploads/editor');
-    let nowDateTime = moment(Date.now()).format('YYMMDD');
-    fs.readdirSync(`uploads/editor/${nowDateTime}`);
 } catch (error) {
     fs.mkdirSync('uploads');
     fs.mkdirSync('uploads/editor');
+}
+
+try {
+    let nowDateTime = moment(Date.now()).format('YYMMDD');
+    fs.readdirSync(`uploads/editor/${nowDateTime}`);
+} catch (error) {
     let nowDateTime = moment(Date.now()).format('YYMMDD');
     fs.mkdirSync(`uploads/editor/${nowDateTime}`);
 }
