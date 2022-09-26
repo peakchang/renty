@@ -139,12 +139,12 @@ router.post('/policy', (req, res, next) => {
     res.render('renty/renty_policy');
 })
 
-router.get('/mailtest', (req, res, next) => {
-    const mailSubject = "창용아 집에 갈까?? ㅠㅠ";
-    const mailContent = "아 존나 피곤하네 진짜루";
-    mailSender.sendEmail(mailSubject, mailContent)
-    res.send('메일 발송 테슷흐!!!!!')
-})
+// router.get('/mailtest', (req, res, next) => {
+//     const mailSubject = "창용아 집에 갈까?? ㅠㅠ";
+//     const mailContent = "아 존나 피곤하네 진짜루";
+//     mailSender.sendEmail(mailSubject, mailContent)
+//     res.send('메일 발송 테슷흐!!!!!')
+// })
 
 
 

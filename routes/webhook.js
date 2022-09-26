@@ -5,7 +5,7 @@ const axios = require('axios');
 const router = express.Router();
 const mysql_conn = require('../db_lib');
 const { sendSms } = require('../db_lib/back_lib');
-
+const nodemailer = require('nodemailer');
 
 var token = process.env.TOKEN || 'token';
 var received_updates = [];

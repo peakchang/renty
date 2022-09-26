@@ -1,6 +1,6 @@
 
 const axios = require('axios');
-
+const nodemailer = require('nodemailer');
 /** 알리고 문자 발송  **/
 exports.sendSms = (receivers, message) => {
     return axios.post('https://apis.aligo.in/send/', null, {
