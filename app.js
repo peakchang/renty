@@ -6,7 +6,6 @@ const session = require('express-session');
 const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
 const passport = require('passport');
-const dateFilter = require('nunjucks-date-filter');
 
 
 // 아래 두개는 서버 관련된 보안을 알아서 해준댜
@@ -81,13 +80,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
+
+if(process.env.NODE_ENV === 'production'){
+  var https_status = true
+}else{
+  var https_status = false
+}
 const sessionOption = {
   resave: false,
   saveUninitialized: false,
   secret: process.env.COOKIE_SECRET,
   cookie: {
     httpOnly: true,
-    secure: true, // if use HTTPS Set 'true' or 'false
+    secure: https_status, // if use HTTPS Set 'true' or 'false 개발할때는 반드시 false로!!
   },
 };
 
@@ -95,6 +100,7 @@ if (process.env.NODE_ENV === 'production') {
   sessionOption.proxy = true;
   sessionOption.cookie.secure = true; // HTTPS Only
 }
+
 
 app.use(session(sessionOption));
 app.use(passport.initialize());
