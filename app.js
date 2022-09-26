@@ -25,7 +25,7 @@ const authRouter = require('./routes/auth');
 const mainRouter = require('./routes/main');
 const webhookRouter = require('./routes/webhook');
 const whRouter = require('./routes/wh');
-
+const reviewRouter = require('./routes/review');
 
 // 레디스 안쓸거면 주석
 // const redis = require('redis');
@@ -106,6 +106,7 @@ app.use('/auth', authRouter);
 app.use('/crm', crmRouter);
 app.use('/webhook', webhookRouter);
 app.use('/wh', whRouter);
+app.use('/review', reviewRouter);
 
 
 // 라우터 없을시 에러 발생

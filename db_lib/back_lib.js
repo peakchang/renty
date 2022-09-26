@@ -31,3 +31,36 @@ exports.randomChracter = (length) => {
     return text;
 }
 
+exports.mailSender = {
+    // 메일발송 함수
+    sendEmail: function (receiver,subject, content) {
+      var transporter = nodemailer.createTransport({
+        service: 'naver',   // 메일 보내는 곳
+        prot: 465,
+        host: 'smtp.naver.com',  
+        secure: true,  
+        requireTLS: true ,
+        auth: {
+          user: process.env.N_MAIL_ID,
+          pass: process.env.N_MAIL_PWD
+        }
+      });
+      // 메일 옵션
+      var mailOptions = {
+        from: `${process.env.N_MAIL_ID}@naver.com`, // 보내는 메일의 주소
+        to: receiver, // 수신할 이메일
+        subject: subject, // 메일 제목
+        text: content // 메일 내용
+      };
+      
+      // 메일 발송    
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+  
+    }
+  }

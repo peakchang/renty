@@ -191,7 +191,7 @@
     $('.review_detail_modal').hide()
     $('.review_detail').click(function (e) {
         console.log(this.firstElementChild.value);
-        axios.post('/getreview', { rv_id: this.firstElementChild.value })
+        axios.post('/review/getreview', { rv_id: this.firstElementChild.value })
             .then((res) => {
                 const contentTarget = document.querySelector('.review_detail_modal_content');
                 const reviewContent = res.data[0].rv_content
@@ -208,8 +208,8 @@
 
 
     $('.review_next').click(function (e) {
-        const setVal = { now_id: this.nextElementSibling.nextElementSibling.value, direction: 'right' }
-        axios.post('/getreview_direct', setVal)
+        const setVal = { now_id: this.nextElementSibling.nextElementSibling.value, direction: 'left' }
+        axios.post('/review/getreview_direct', setVal)
             .then((res) => {
                 console.log(res.data);
                 console.log(res.data[0]);
@@ -232,8 +232,8 @@
     })
 
     $('.review_pre').click(function (e) {
-        const setVal = { now_id: this.nextElementSibling.nextElementSibling.nextElementSibling.value, direction: 'left' }
-        axios.post('/getreview_direct', setVal)
+        const setVal = { now_id: this.nextElementSibling.nextElementSibling.nextElementSibling.value, direction: 'right' }
+        axios.post('/review/getreview_direct', setVal)
             .then((res) => {
                 console.log(res.data);
                 console.log(res.data[0]);
