@@ -892,6 +892,9 @@ input[type="range"]::-ms-fill-lower {
 .top-14 {
   top: 3.5rem;
 }
+.top-32 {
+  top: 8rem;
+}
 .top-0 {
   top: 0px;
 }
@@ -1314,6 +1317,10 @@ input[type="range"]::-ms-fill-lower {
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 .bg-gray-900 {
   --tw-bg-opacity: 1;
