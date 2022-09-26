@@ -36,11 +36,11 @@ router.post('/' , async (req,res) => {
     console.log('Facebook request body:', getData);
     console.log('request header X-Hub-Signature validated');
     console.log(getData.entry[0].changes);
-    setData = JSON.stringify(getData)
-    const setArr = ['testname','testphone' ,setData]
-    const inserSql = "INSERT INTO application_form (mb_name, mb_phone, form_memo_1) VALUES (?,?,?)";
+    // setData = JSON.stringify(getData)
+    // const setArr = ['testname','testphone' ,setData]
+    // const inserSql = "INSERT INTO application_form (mb_name, mb_phone, form_memo_1) VALUES (?,?,?)";
     
-    await sql_con.promise().query(inserSql, setArr)
+    // await sql_con.promise().query(inserSql, setArr)
     // Process the Facebook updates here111111111111111111
     received_updates.unshift(req.body);
     res.sendStatus(200);
