@@ -11,33 +11,29 @@ moment.tz.setDefault("Asia/Seoul");
 const router = express.Router();
 
 router.get('/join', isNotLoggedIn, async (req, res, next) => {
-    // let today = new Date();
-    // let now = today.toLocaleString();
-    // console.log(now);
+    console.log(req.query);
 
-    // 회원가입 샘플
-    // var mysqlTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-    // let sampleId = 'test111'
-    // let sampleNick = '나야나야나야나'
-    // let samplePWD = await bcrypt.hash('112313', 12);
-    // let testSql = `INSERT INTO users (userid, nick, password, createdAt, updatedAt) VALUES('${sampleId}', '${sampleNick}', '${samplePWD}', '${mysqlTimestamp}', '${mysqlTimestamp}');`;
-
-    // await executeQuery(testSql);
+    const allQuery = req.query;
+    let today = new Date();
+    let now = today.toLocaleString();
+    console.log(now);
 
     // SELECT 출력 샘플
-    res.render('auth/join');
+    res.render('auth/join', {allQuery});
 })
 
 router.post('/join', isNotLoggedIn, async (req, res, next) => {
+
     var { userid_inp, nick, password } = req.body;
 
     try {
         console.log(userid_inp);
-        let getUserSql = `SELECT userid FROM users WHERE userid = '${userid_inp}'`;
-        let getUser = await executeQuery(getUserSql);
+        let getUserSql = `SELECT * FROM users WHERE userid = '${userid_inp}'`;
+        let getUser = await sql_con.promise().query(getUserSql)
 
         const exUser = getUser[0]
-        if (exUser) {
+        console.log(exUser);
+        if (exUser != []) {
             return res.redirect('/auth/join?error=exist');
         }
 
@@ -52,6 +48,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
         console.error(error);
         return next(error);
     }
+    res.send('asljdfliasjdf')
 });
 
 
@@ -59,9 +56,11 @@ router.get('/login', isNotLoggedIn, (req, res, next) => {
     let loginErr = req.query
     res.render('auth/login', { loginErr });
 });
+
 router.post('/login', isNotLoggedIn, (req, res, next) => {
     let movePath = req.query
     console.log(req.body);
+    console.log(movePath);
     
     passport.authenticate('local', (authError, user, info) => {
         if (authError) {
@@ -73,6 +72,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
             return res.redirect(`/auth/login/?loginError=${info.message}&move=${movePath.move}`)
         }
         return req.login(user, (loginError) => {
+            
             console.log(user);
 
             if (loginError) {

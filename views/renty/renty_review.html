@@ -33,9 +33,15 @@
 <ul class="divide-y px-3">
 
     {% for review in all_reviews %}
-    <li class="h-20 max-w-3xl mx-auto py-1 cursor-pointer">
+    <li class="h-20 max-w-3xl mx-auto py-1 cursor-pointer review_detail">
+        <input type="hidden" value="{{ review.id }}">
         <div class="h-full float-left overflow-hidden chkimgcss mr-4 rounded-xl">
-            <img src="/img/sample/review/2-1.JPG" alt="" class="w-full">
+            {% if review.rv_thumb == "" %}
+            <img src="http://memorymaker.co.kr/en/plugin/wz.booking.pension.prm/img/noimage.gif" alt="" class="w-full">
+
+            {% else %}
+            <img src="{{ review.rv_thumb }}" alt="" class="w-full">
+            {% endif %}
         </div>
         <div class="h-full flex flex-col justify-center">
             <div class="flex items-center text-sm text-gray-500">
@@ -152,8 +158,103 @@
 
 
 
+<div style="height: 100%; width: 100%; background-color: rgba(93, 90, 90, 0.8); z-index: 51; position: fixed; left: 0px; top: 0px;"
+    class="flex justify-center items-center cursor-pointer review_detail_modal px-2">
+    <div class="relative bg-white rounded p-3 text-center w-full md:w-2/3 lg:w-2/4 "
+        style="max-height: 60vh; z-index: 52;">
+        <span class="absolute top-1 right-3 text-4xl text-red-600 close_modal">
+            <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+        </span>
+
+        <span class="absolute left-1 top-1/2 text-4xl text-gray-300 review_pre">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </span>
+        <span class="absolute right-1 top-1/2 text-4xl text-gray-300 review_next">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </span>
+
+
+        <div class="review_detail_modal_content overflow-auto p-3"
+            style="height: 100%; max-height: 500px; min-height: 100px;">
+
+        </div>
+        <input type="hidden">
+
+    </div>
+</div>
+
+
+
 
 <script>
+
+    $('.review_detail_modal').hide()
+    $('.review_detail').click(function (e) {
+        console.log(this.firstElementChild.value);
+        axios.post('/getreview', { rv_id: this.firstElementChild.value })
+            .then((res) => {
+                const contentTarget = document.querySelector('.review_detail_modal_content');
+                const reviewContent = res.data[0].rv_content
+                contentTarget.innerHTML = "";
+                contentTarget.innerHTML = reviewContent;
+                console.log(res.data[0]);
+                contentTarget.nextElementSibling.value = res.data[0].id
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+        $('.review_detail_modal').show()
+    })
+
+
+    $('.review_next').click(function (e) {
+        const setVal = { now_id: this.nextElementSibling.nextElementSibling.value, direction: 'right' }
+        axios.post('/getreview_direct', setVal)
+            .then((res) => {
+                console.log(res.data);
+                console.log(res.data[0]);
+                if (res.data[0] == '') {
+                    alert('더이상 리뷰가 없습니다.')
+                    return false
+                }
+                const contentTarget = document.querySelector('.review_detail_modal_content');
+                const reviewContent = res.data[0][0].rv_content
+                console.log(reviewContent);
+                contentTarget.innerHTML = "";
+                contentTarget.innerHTML = reviewContent;
+                contentTarget.nextElementSibling.value = res.data[0][0].id
+            })
+            .catch((err) => {
+                alert('더이상 리뷰가 없습니다.')
+                return false
+                console.error(err);
+            });
+    })
+
+    $('.review_pre').click(function (e) {
+        const setVal = { now_id: this.nextElementSibling.nextElementSibling.nextElementSibling.value, direction: 'left' }
+        axios.post('/getreview_direct', setVal)
+            .then((res) => {
+                console.log(res.data);
+                console.log(res.data[0]);
+                if (res.data[0] == '') {
+                    alert('더이상 리뷰가 없습니다.')
+                    return false
+                }
+                const contentTarget = document.querySelector('.review_detail_modal_content');
+                const reviewContent = res.data[0][0].rv_content
+                console.log(reviewContent);
+                contentTarget.innerHTML = "";
+                contentTarget.innerHTML = reviewContent;
+                contentTarget.nextElementSibling.value = res.data[0][0].id
+            })
+            .catch((err) => {
+                alert('더이상 리뷰가 없습니다.')
+                return false
+                console.error(err);
+            });
+    })
+
 
     if (document.getElementById('addimage')) {
         document.getElementById('addimage').addEventListener('change', function (e) {
@@ -163,7 +264,7 @@
             axios.post('/review/img', formData)
                 .then((res) => {
 
-                    console.log("반환되는 내용은!!! : "+res.data.url);
+                    console.log("반환되는 내용은!!! : " + res.data.url);
 
                     // 이미지 URL 담기는 INPUT에 추가
                     let preImageList = document.querySelector('#image_list').value;
@@ -231,7 +332,7 @@
 
         console.log(delTargetUrl);
 
-        axios.post('/review/delimg',{imgname:delTargetUrl})
+        axios.post('/review/delimg', { imgname: delTargetUrl })
             .then((res) => {
                 console.log(res);
             })
@@ -248,6 +349,7 @@
 
     $('.close_modal').click(function (e) {
         $('.review_modal').hide()
+        $('.review_detail_modal').hide()
     })
 
     $('.goto_write').click(function (e) {

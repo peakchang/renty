@@ -32,7 +32,7 @@ try {
 }
 
 const upload = multer({
-    
+
     storage: multer.diskStorage({
         // 경로를 설정
         destination(req, file, cb) {
@@ -57,13 +57,13 @@ router.post('/review/img', upload.single('img'), (req, res) => {
     console.log(req.file);
     let dateFolder = moment(Date.now()).format('YYMMDD');
     res.json({ url: `/img/editor/${dateFolder}/${req.file.filename}` });
-  });
+});
 
 const upload2 = multer();
 router.post('/review', upload2.none(), async (req, res, next) => {
     // 내용 P태그로 바꾸기
     var reviewContent = req.body.review_content;
-    if(reviewContent.includes('\r\n')){
+    if (reviewContent.includes('\r\n')) {
         var reviewContent = reviewContent.replace(/\/r\/n/g, '</p><p>')
     }
     var reviewContent = `<p>${reviewContent}</p>`;
@@ -87,12 +87,12 @@ router.post('/review', upload2.none(), async (req, res, next) => {
 
 router.post('/review/delimg', upload.single('img'), (req, res) => {
     var delFileName = req.body.imgname;
-    var delFileName = delFileName.replace('img','uploads');
+    var delFileName = delFileName.replace('img', 'uploads');
     var delFileName = delFileName.substring(1);
     fs.unlink(delFileName, err => {
     })
     res.send('완료 되었습니다.')
-  });
+});
 
 
 router.get('/test', (req, res, next) => {
@@ -105,8 +105,53 @@ router.get('/test', (req, res, next) => {
 
 
 
-router.get('/', (req, res, next) => {
-    res.render('renty/renty_main');
+router.get('/', async (req, res, next) => {
+    // console.log(req.session);
+    // console.log(req.cookies);
+    // console.log(req.user);
+    // console.log(req.isAuthenticated());
+
+    const reviewSql = `SELECT * FROM reviews ORDER BY id DESC LIMIT 8;`;
+    const reviewDatas = await mysql_conn.promise().query(reviewSql);
+    const all_reviews = reviewDatas[0]
+    // console.log(all_reviews);
+
+    for await (const [i, review] of all_reviews.entries()) {
+        const thumbReg = /\<img\ssrc\=\"[\w\/\.]+[^\"]/;
+        if (thumbReg.exec(review.rv_content) == null) {
+            review.rv_thumb = ""
+        } else {
+            var tempThumb = thumbReg.exec(review.rv_content);
+            var tempThumb = tempThumb[0].replace(/\<img\ssrc\=\"/g, "");
+            review.rv_thumb = tempThumb
+        }
+
+
+        // 날짜 형식 변경
+        let getDate = review.rv_created_at.getDate()
+        let getMonth = review.rv_created_at.getMonth() + 1
+        let getFullYear = review.rv_created_at.getFullYear()
+        let setDate = getFullYear + "." + getMonth + "." + getDate;
+        review.rv_created_at = setDate
+
+        // 이름 가운데 가리기
+        let firstStr = review.rv_name.charAt(0);
+        let lastStr = review.rv_name.charAt(review.rv_name.length - 1);
+        let setName = firstStr + '*' + lastStr;
+        review.rv_name = setName
+
+        // P태그, 이미지 태그 빼기
+        var myRegExp1 = /<IMG(.*?)>/gi;
+        var mtRegExp2 = /[\<p\>\/]/g;
+        review.rv_content = review.rv_content.replace(myRegExp1, '');
+        review.rv_content = review.rv_content.replace(mtRegExp2, ' ');
+
+
+    }
+
+    console.log(all_reviews);
+
+    res.render('renty/renty_main' , {all_reviews} );
 })
 
 
@@ -197,14 +242,29 @@ router.post('/success', async (req, res, next) => {
 
 router.get('/review', async (req, res, next) => {
 
+    // const text = `대나무 빨대 구입 문의 : http://dogumaster.com http://google.com <img src=/slkdjfasf.com> 010-1111-2222 02-333-7777 curryyou@aaa.com`;
+    // // const tesrReg = /https?\:\/\/[\w\-\.]+/g;
+    // const tesrReg = /\<img\ssrc\=[\w\/\.]+/ig;
+    // // var testchk = text.match();
+    // var testchk = tesrReg.exec(text)
+
+    // console.log(testchk);
+
     const reviewSql = `SELECT * FROM reviews;`;
     const reviewDatas = await mysql_conn.promise().query(reviewSql);
     const all_reviews = reviewDatas[0]
     // console.log(all_reviews);
 
     for await (const [i, review] of all_reviews.entries()) {
-        console.log(review);
-        console.log(i);
+        const thumbReg = /\<img\ssrc\=\"[\w\/\.]+[^\"]/;
+        if (thumbReg.exec(review.rv_content) == null) {
+            review.rv_thumb = ""
+        } else {
+            var tempThumb = thumbReg.exec(review.rv_content);
+            var tempThumb = tempThumb[0].replace(/\<img\ssrc\=\"/g, "");
+            review.rv_thumb = tempThumb
+        }
+
 
         // 날짜 형식 변경
         let getDate = review.rv_created_at.getDate()
@@ -225,7 +285,7 @@ router.get('/review', async (req, res, next) => {
         review.rv_content = review.rv_content.replace(myRegExp1, '');
         review.rv_content = review.rv_content.replace(mtRegExp2, ' ');
 
-        
+
     }
 
     console.log(all_reviews);
@@ -246,6 +306,46 @@ router.get('/policy', (req, res, next) => {
 
 router.post('/policy', (req, res, next) => {
     res.render('renty/renty_policy');
+})
+
+
+router.post('/getreview', async (req, res, naxt) => {
+    const getId = req.body.rv_id
+
+    const getRvSql = `SELECT * FROM reviews WHERE id = ?`;
+    const getData = await mysql_conn.promise().query(getRvSql, [getId])
+
+    console.log(getData[0]);
+    res.send(getData[0])
+})
+
+router.post('/getreview_direct', async (req, res, naxt) => {
+    console.log(req.body);
+
+    console.log(typeof(req.body.now_id));
+    if (req.body.direction == 'left') {
+        var getId = Number(req.body.now_id) - 1;
+        var getSubId = Number(req.body.now_id) - 2;
+    } else {
+        var getId = Number(req.body.now_id) + 1;
+        var getSubId = Number(req.body.now_id) - +2;
+    }
+
+    console.log(getId);
+
+    try {
+        const getRvSql = `SELECT * FROM reviews WHERE id = ?`;
+        const getData = await mysql_conn.promise().query(getRvSql, [getId])
+        res.send(getData)
+    } catch (error) {
+        try {
+            const getRvSql = `SELECT * FROM reviews WHERE id = ?`;
+            const getData = await mysql_conn.promise().query(getRvSql, [getSubId])
+            res.send(getData)
+        } catch (error) {
+            return res.send('error')
+        }
+    }
 })
 
 module.exports = router;

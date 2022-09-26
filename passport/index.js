@@ -8,13 +8,15 @@ module.exports = () => {
     console.log(`네번째 관문 ${user.id}`);
     console.log(done);
     done(null, user.id); // 세션에 유저의 id만 저장
+    console.log('asldjflajsdfijasldifjalisjdf');
   });
 
   // {id: 3, 'connect.sid' : s%23412324234234}
-  passport.deserializeUser((id, done) => {
+  passport.deserializeUser(async (id, done) => {
     console.log("5번째 관문은?");
+    console.log('아니 여기는 왜 안오는건데?????');
     let getUserSql = `SELECT * FROM users WHERE id = '?'`;
-    sql_con.query(getUserSql , [id], (err, result) => {
+    await sql_con.query(getUserSql , [id], (err, result) => {
       if(err) console.log('mysql 에러');     
      
       console.log("deserializeUser mysql result : " , result);
