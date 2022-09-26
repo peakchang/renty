@@ -61,6 +61,7 @@ router.post('/review/img', upload.single('img'), (req, res) => {
 
 const upload2 = multer();
 router.post('/review', upload2.none(), async (req, res, next) => {
+    console.log(req.body);
     // 내용 P태그로 바꾸기
     var reviewContent = req.body.review_content;
     if (reviewContent.includes('\r\n')) {
@@ -77,9 +78,18 @@ router.post('/review', upload2.none(), async (req, res, next) => {
     const reviewAllContent = reviewImage + reviewContent;
 
     // DB 입력하기
-    const reviewArr = [req.body.mb_name, req.body.mb_phone, reviewAllContent]
-    const reviewSql = `INSERT INTO reviews (rv_name, rv_phone, rv_content) VALUES (?,?,?)`;
 
+    console.log(req.body.mb_name);
+    console.log(req.body.mb_phone);
+    console.log(reviewAllContent);
+    console.log(req.body.rv_created_at);
+    if (req.body.rv_created_at != "") {
+        var reviewArr = [req.body.mb_name, req.body.mb_phone, reviewAllContent, req.body.rv_created_at]
+        var reviewSql = `INSERT INTO reviews (rv_name, rv_phone, rv_content, rv_created_at) VALUES (?,?,?,?)`;
+    } else {
+        var reviewArr = [req.body.mb_name, req.body.mb_phone, reviewAllContent]
+        var reviewSql = `INSERT INTO reviews (rv_name, rv_phone, rv_content) VALUES (?,?,?)`;
+    }
     await mysql_conn.promise().query(reviewSql, reviewArr)
 
     res.redirect('/review');
@@ -149,9 +159,7 @@ router.get('/', async (req, res, next) => {
 
     }
 
-    console.log(all_reviews);
-
-    res.render('renty/renty_main' , {all_reviews} );
+    res.render('renty/renty_main', { all_reviews });
 })
 
 
@@ -287,17 +295,11 @@ router.get('/review', async (req, res, next) => {
 
 
     }
-
-    console.log(all_reviews);
     res.render('renty/renty_review', { all_reviews });
 })
 
 
-router.post('/review', async (req, res, next) => {
-    console.log('******************');
-    console.log(req.body);
-    res.render('renty/renty_review',);
-})
+
 
 
 router.get('/policy', (req, res, next) => {
@@ -322,7 +324,7 @@ router.post('/getreview', async (req, res, naxt) => {
 router.post('/getreview_direct', async (req, res, naxt) => {
     console.log(req.body);
 
-    console.log(typeof(req.body.now_id));
+    console.log(typeof (req.body.now_id));
     if (req.body.direction == 'left') {
         var getId = Number(req.body.now_id) - 1;
         var getSubId = Number(req.body.now_id) - 2;

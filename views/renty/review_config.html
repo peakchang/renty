@@ -40,8 +40,10 @@
         </div>
         <div class="py-3">
 
+            <input type="date" name="rv_created_at" id="default-input" placeholder="이름을 입력해주세요"
+                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg py-2 px-3 ml-5">
 
-            <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200">
+            <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 ">
                 <div class="py-2 px-4 bg-white rounded-t-lg ">
                     <label for="comment" class="sr-only">Your comment</label>
                     <textarea id="comment" rows="4" name="review_content"
@@ -50,7 +52,7 @@
                 </div>
                 <div class="flex justify-between items-center py-2 px-3 border-t ">
                     <button type="submit"
-                        class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-green-700">
+                        class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-green-700 onsubmit">
                         작성 완료하기
                     </button>
                     <div class="flex pl-0 space-x-1 sm:pl-2">
@@ -120,6 +122,16 @@
                 });
         });
     }
+
+
+    $('.onsubmit').click(function (e) {
+        const mb_phone1 = document.querySelector('.mb_phone1').value;
+        const mb_phone2 = document.querySelector('.mb_phone2').value;
+        const mb_phone3 = document.querySelector('.mb_phone3').value;
+        const mb_phone = `${mb_phone1}-${mb_phone2}-${mb_phone3}`;
+        document.querySelector('.mb_phone').value = mb_phone
+    })
+
 
     $(document).on('click', '.delete_image', function (e) {
 
