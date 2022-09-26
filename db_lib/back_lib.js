@@ -38,7 +38,7 @@ exports.mailSender = {
       service: 'naver',   // 메일 보내는 곳
       prot: 465,
       host: 'smtp.naver.com',  
-      secure: true,  
+      secure: false,  
       requireTLS: true ,
       auth: {
         user: process.env.N_MAIL_ID,
