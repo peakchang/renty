@@ -250,7 +250,7 @@ router.get('/review', async (req, res, next) => {
 
     // console.log(testchk);
 
-    const reviewSql = `SELECT * FROM reviews;`;
+    const reviewSql = `SELECT * FROM reviews ORDER BY id DESC LIMIT 8`;
     const reviewDatas = await mysql_conn.promise().query(reviewSql);
     const all_reviews = reviewDatas[0]
     // console.log(all_reviews);
