@@ -81,6 +81,7 @@ router.post('/', async (req, res) => {
         console.log('암것도 포함 안됨!!');
     }
 
+
     const mailSubject = `${form_type_in} 고객명 ${get_full_name} 접수되었습니다.`;
     const mailContent = `${form_type_in} 고객명 ${get_full_name} 접수되었습니다\n\ ${get_form_name} 폼에서 접수되었습니다.`;
     mailSender.sendEmail('adpeak@naver.com',mailSubject, mailContent);
