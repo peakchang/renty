@@ -91,7 +91,7 @@ router.use('/estate_work', async (req, res, next) => {
     for await(const data of wData) {
         data.chkCount = pageChkCount;
         data.mb_phone_chk = phNumBar(data.mb_phone);
-        data.created_at.setHours(data.created_at.getHours()+9);
+        // data.created_at.setHours(data.created_at.getHours()+9);
         pageChkCount--
     }
     // console.log(wData);
