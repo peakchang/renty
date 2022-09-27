@@ -8,6 +8,29 @@ const router = express.Router();
 
 
 
+router.post('/estate_work/delete', async (req, res, next) => {
+    console.log('alisjdflajsdfjasildjf');
+    console.log(req.body.set_db_list);
+    const set_db_list = req.body.set_db_list;
+    const getStatusSql = `SELECT * FROM form_status WHERE id=1;`;
+    const getStatusText = await sql_con.promise().query(getStatusSql)
+    console.log();
+    const estate_status_list = getStatusText[0][0].estate_status.split(',')
+    const estate_status = estate_status_list[1];
+    console.log(estate_status);
+    // console.log(estate_list);
+
+    for await(const on_db_id of set_db_list) {
+        console.log(on_db_id);
+        let updateSql = `UPDATE application_form SET mb_status = '${estate_status}' WHERE id=${on_db_id}`;
+        await sql_con.promise().query(updateSql)
+    }
+
+
+    res.send(200);
+})
+
+
 router.use('/estate_work/detail', async (req, res, next) => {
     res.render('crm/work_estate');
 })
@@ -61,7 +84,6 @@ router.use('/estate_work', async (req, res, next) => {
         var pagingEndCount = maxCount;
     }
     const setDbSql = `SELECT * FROM application_form WHERE form_type_in='분양' ${getEst} ORDER BY id DESC LIMIT ${startCount}, ${pageCount};`;
-    console.log(setDbSql);
     const tempData = await sql_con.promise().query(setDbSql)
     var wData = tempData[0];
 
@@ -79,6 +101,7 @@ router.use('/estate_work', async (req, res, next) => {
     all_data.nowCount = nowCount;
     res.render('crm/work_estate', { all_data });
 })
+
 
 
 
