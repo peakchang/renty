@@ -49,6 +49,7 @@ exports.tableSetting = async () => {
         mb_gift_bankname VARCHAR(50),
         mb_gift_accountnum VARCHAR(50),
         mb_gift_name VARCHAR(50),
+        mb_status VARCHAR(20),
         form_memo_1 VARCHAR(255),
         form_memo_2 VARCHAR(255),
         form_memo_3 VARCHAR(255),
@@ -66,15 +67,7 @@ exports.tableSetting = async () => {
     } catch (err) {
         console.error(err);
     }
-    let makeFormTypesTable = `CREATE TABLE IF NOT EXISTS form_types(
-        form_name VARCHAR(50),
-        form_type VARCHAR(50)
-    );`
-    try {
-        sql_con.query(makeFormTypesTable, async (err, result) => { });
-    } catch (err) {
-        console.error(err);
-    }
+
 
 
     let makereviewTable = `CREATE TABLE IF NOT EXISTS reviews(
@@ -93,9 +86,72 @@ exports.tableSetting = async () => {
     let setSql = `ALTER TABLE reviews MODIFY rv_created_at DEFAULT ON UPDATE CURRENT_TIMESTAMP;`
     sql_con.query(setSql, (err, result) => { });
 
+    // 여기부터 하나씩 실행
+    // ALTER TABLE reviews MODIFY COLUMN rv_created_at DATETIME DEFAULT NOW(); // 성공
+    // DROP TABLE if exists form_types;
+    // ALTER TABLE application_form ADD COLUMN mb_status VARCHAR(20) AFTER mb_gift_name;
+
+    let makeFormTypesTable = `CREATE TABLE IF NOT EXISTS form_status(
+            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            renty_status VARCHAR(50),
+            estate_status VARCHAR(50),
+            estate_list VARCHAR(50)
+        );`
+    try {
+        sql_con.query(makeFormTypesTable, async (err, result) => { });
+    } catch (err) {
+        console.error(err);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // let makeFormTypesTable = `CREATE TABLE IF NOT EXISTS form_types(
+    //     form_name VARCHAR(50),
+    //     form_type VARCHAR(50)
+    // );`
+    // try {
+    //     sql_con.query(makeFormTypesTable, async (err, result) => { });
+    // } catch (err) {
+    //     console.error(err);
+    // }
+
+
+
+
+
+
+
+
     // ALTER TABLE reviews ADD CONRAINT rv_created_at DEFAULT ON UPDATE CURRENT_TIMESTAMP;;ST
-    // ALTER TABLE reviews MODIFY COLUMN rv_created_at DATETIME DEFAULT NOW();
-    
+    // let createStatusTable = `CREATE TABLE IF NOT EXISTS set_status(
+    //     form_name VARCHAR(50),
+    //     form_type VARCHAR(50)
+    // );`
+    // try {
+    //     sql_con.query(makeFormTypesTable, async (err, result) => { });
+    // } catch (err) {
+    //     console.error(err);
+    // }
+
     // let changeArr = ['item_other', 'form_memo_1', 'form_memo_2', 'form_memo_3', 'form_memo_4', 'form_memo_5', 'form_memo_6', 'form_memo_7', 'form_memo_8', 'form_memo_9', 'form_memo_10', 'mb_address']
 
     // changeArr.forEach(element => {

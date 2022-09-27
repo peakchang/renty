@@ -6,7 +6,7 @@ const session = require('express-session');
 const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
 const passport = require('passport');
-
+const dateFilter = require('nunjucks-date-filter');
 
 // 아래 두개는 서버 관련된 보안을 알아서 해준댜
 const helmet = require('helmet');
@@ -53,10 +53,20 @@ const xhub = require('express-x-hub');
 passportConfig(); // 패스포트 설정
 app.set('port', process.env.PORT || 8001);
 app.set('view engine', 'html');
-nunjucks.configure('views', {
-  express: app,
-  watch: true,
-});
+
+function setUpNunjucks(expressApp) {
+  let nunjucks_env = nunjucks.configure('views', {
+    autoescape: true,
+    express: app,
+    watch: true,
+  });
+  nunjucks_env.addFilter('date', dateFilter);
+}
+setUpNunjucks();
+// nunjucks.configure('views', {
+//   express: app,
+//   watch: true,
+// });
 
 
 
@@ -81,9 +91,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 
-if(process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === 'production') {
   var https_status = true
-}else{
+} else {
   var https_status = false
 }
 const sessionOption = {
