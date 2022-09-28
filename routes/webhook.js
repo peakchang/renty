@@ -69,6 +69,7 @@ router.post('/', async (req, res) => {
     }
 
     console.log(get_phone);
+    
     if (get_form_name.includes('인터넷')) {
         var form_type_in = '인터넷'
         console.log('인터넷 포함!!');

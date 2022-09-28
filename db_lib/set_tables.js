@@ -90,6 +90,7 @@ exports.tableSetting = async () => {
     // ALTER TABLE reviews MODIFY COLUMN rv_created_at DATETIME DEFAULT NOW(); // 성공
     // DROP TABLE if exists form_types;
     // ALTER TABLE application_form ADD COLUMN mb_status VARCHAR(20) AFTER mb_gift_name;
+    // ALTER TABLE users ADD COLUMN updated_at DATETIME DEFAULT NOW() AFTER created_at;
 
     let makeFormTypesTable = `CREATE TABLE IF NOT EXISTS form_status(
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

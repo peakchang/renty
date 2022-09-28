@@ -11,8 +11,6 @@ moment.tz.setDefault("Asia/Seoul");
 const router = express.Router();
 
 router.get('/join', isNotLoggedIn, async (req, res, next) => {
-    console.log(req.query);
-
     const allQuery = req.query;
     let today = new Date();
     let now = today.toLocaleString();
@@ -25,17 +23,11 @@ router.get('/join', isNotLoggedIn, async (req, res, next) => {
 router.post('/join', isNotLoggedIn, async (req, res, next) => {
 
     var { userid_inp, nick, password } = req.body;
-    console.log(userid_inp);
-    console.log(nick);
-    console.log(password);
-
     try {
-        console.log(userid_inp);
         let getUserSql = `SELECT * FROM users WHERE userid = '${userid_inp}'`;
         let getUser = await sql_con.promise().query(getUserSql)
 
         const exUser = getUser[0]
-        console.log(exUser);
         if (exUser == []) {
             return res.redirect('/auth/join?error=exist');
         }
