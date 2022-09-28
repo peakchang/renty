@@ -318,7 +318,7 @@
                                 <div class="col-span-2 text-center flex items-center justify-center">은행명</div>
                                 <div class="col-span-6 flex">
                                     <select
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow mb_bank_cpn"
                                         name="mb_bank_cpn" id="">
                                         <option value="경남은행">경남은행</option>
                                         <option value="광주은행">광주은행</option>
@@ -508,7 +508,7 @@
                             <div class="col-span-2 text-center flex items-center justify-center">사은품계좌</div>
                             <div class="col-span-6 flex">
                                 <select
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-4 appearance-none select-arrow mb_gift_bankname"
                                     name="mb_gift_bankname" id="">
                                     <option value="경남은행">경남은행</option>
                                     <option value="광주은행">광주은행</option>
@@ -715,13 +715,17 @@
 
     document.querySelector('#gift-checkbox').addEventListener('change', function (e) {
         console.log(this.checked);
+        console.log();
         if (this.checked == true) {
-
             var mb_bank_name = document.querySelector('input[name=mb_bank_name]').value;
             document.querySelector('input[name=mb_gift_name]').value = mb_bank_name;
 
             var mb_bank_accountnum = document.querySelector('input[name=mb_bank_accountnum]').value;
             document.querySelector('input[name=mb_gift_accountnum]').value = mb_bank_accountnum;
+
+            var mb_bank_cpn = document.querySelector('.mb_bank_cpn').value
+            $('.mb_gift_bankname').val(mb_bank_cpn).prop('selected', true);
+            
             
             if (mb_bank_name == "") {
                 var mb_card_name = document.querySelector('input[name=mb_card_name]').value;
