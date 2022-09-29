@@ -85,8 +85,8 @@ router.post('/', async (req, res) => {
 
     const mailSubject = `${form_type_in} 고객명 ${get_full_name} 접수되었습니다.`;
     const mailContent = `${form_type_in} 고객명 ${get_full_name} 접수되었습니다\n\ ${get_form_name} 폼에서 접수되었습니다.`;
-    mailSender.sendEmail('adpeak@naver.com',mailSubject, mailContent);
-    mailSender.sendEmail('changyong112@naver.com',mailSubject, mailContent);
+    // mailSender.sendEmail('adpeak@naver.com',mailSubject, mailContent);
+    // mailSender.sendEmail('changyong112@naver.com',mailSubject, mailContent);
 
     let getArr = [get_form_name, form_type_in, get_full_name, get_phone, nowDateTime];
     let formInertSql = `INSERT INTO application_form (form_name, form_type_in, mb_name, mb_phone, created_at) VALUES (?,?,?,?,?);`;
