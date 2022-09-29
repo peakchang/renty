@@ -41,9 +41,6 @@ router.use('/estate_work', async (req, res, next) => {
     // 1이면 0부터 / 2 이면 15부터 / 3이면 30부터
     let all_data = {};
 
-
-
-
     // 옵션값 구하기
     const getStatusSql = `SELECT * FROM form_status WHERE id=1;`;
     const getStatusText = await sql_con.promise().query(getStatusSql)
@@ -107,17 +104,14 @@ router.use('/estate_work', async (req, res, next) => {
 
 
 
+
+
 router.get('/renty_work', async (req, res, next) => {
-    const allDbSql = "SELECT * FROM application_form ;";
-    // const tempData = await sql_con.promise().query(allDbSql)
-    // const wData = tempData[0];
-    var wData = ''
-    await sql_con.query(allDbSql, function (err, result, field) {
-        console.log(field);
-        wData = result;
-    })
-    console.log(wData);
-    res.render('crm/work_renty', { wData });
+    const allDbSql = "SELECT * FROM application_form WHERE form_type_in='인터넷' ORDER BY id DESC;";
+    console.log();
+    var wData = await sql_con.promise().query(allDbSql)
+    var w_data = wData[0]
+    res.render('crm/work_renty', { w_data });
 })
 
 
